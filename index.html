@@ -1,0 +1,2055 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IKHRAM Bilal W // Personal Operating System & Creative Engineering</title>
+  <meta name="description" content="Bespoke personal portfolio of Ikhram Bilal Widhyadana. Frontend engineering, tactile IoT prototyping, and editorial design systems.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Syne', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            base: '#FAFAF7',
+            navy: '#0A0F1D',
+            electric: '#2563EB',
+            vividOrange: '#FF5722',
+            brightYellow: '#FFD600',
+            coral: '#FF6B6B',
+            freshLime: '#10B981',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      color-scheme: light;
+      --bg-base: #FAFAF7;
+      --text-primary: #0A0F1D;
+      --text-muted: #526075;
+      --text-subtle: #8A99AD;
+      --border-light: #E5E7EB;
+      --accent-blue: #2563EB;
+      --accent-orange: #FF5722;
+      --accent-yellow: #FFD600;
+      --accent-coral: #FF6B6B;
+      --accent-lime: #10B981;
+    }
+
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --bg-base: #0B1120;
+      --text-primary: #F1F5F9;
+      --text-muted: #C0CBD9;
+      --text-subtle: #94A3B8;
+      --border-light: #334155;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .bg-blueprint-grid {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(10, 15, 29, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(10, 15, 29, 0.035) 1px, transparent 1px);
+    }
+
+    html[data-theme="dark"] .bg-blueprint-grid {
+      background-image:
+        linear-gradient(to right, rgba(226, 232, 240, 0.045) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(226, 232, 240, 0.045) 1px, transparent 1px);
+    }
+
+    html[data-theme="dark"] .text-navy {
+      color: #F1F5F9 !important;
+    }
+
+    html[data-theme="dark"] [class*="text-gray-"] {
+      color: #A7B3C4 !important;
+    }
+
+    html[data-theme="dark"] .project-cover .text-navy {
+      color: #0A0F1D !important;
+    }
+
+    html[data-theme="dark"] .project-cover .text-gray-600,
+    html[data-theme="dark"] .project-cover .text-gray-500 {
+      color: #334155 !important;
+    }
+
+    html[data-theme="dark"] .project-cover .bg-white {
+      background-color: #FFFFFF !important;
+      color: #0A0F1D !important;
+    }
+
+    .project-cover--modal {
+      margin: 0;
+      padding: 16px;
+    }
+
+    html[data-theme="dark"] .web-attachment-cover .text-navy {
+      color: #0A0F1D !important;
+    }
+
+    html[data-theme="dark"] .web-attachment-cover .text-gray-600 {
+      color: #334155 !important;
+    }
+
+    .web-attachment-cover .web-attachment-title {
+      max-width: 100%;
+      font-size: 20px;
+      line-height: 1.1;
+      overflow-wrap: normal;
+      word-break: normal;
+      hyphens: none;
+    }
+
+    .web-attachment-cover {
+      min-height: 180px;
+    }
+
+    .web-attachment-cover--store .web-attachment-title {
+      max-width: 68%;
+      font-size: 18px;
+    }
+
+    .web-storefront-art {
+      position: absolute;
+      top: 50%;
+      right: 18px;
+      width: 76px;
+      height: 92px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      transform: translateY(-50%);
+      filter: drop-shadow(3px 4px 0 rgba(10, 15, 29, 0.14));
+    }
+
+    .web-storefront-awning {
+      width: 100%;
+      height: 17px;
+      border: 1px solid #493723;
+      background: repeating-linear-gradient(90deg, #D86D79 0 12px, #FFF8F1 12px 24px);
+    }
+
+    .web-storefront-window {
+      width: 64px;
+      height: 57px;
+      display: grid;
+      grid-template-columns: repeat(2, 16px);
+      grid-template-rows: repeat(2, 16px);
+      align-content: center;
+      justify-content: center;
+      gap: 5px;
+      border: 1px solid #493723;
+      border-top: 0;
+      background: rgba(255, 250, 245, 0.9);
+    }
+
+    .web-storefront-window span {
+      border: 1px solid rgba(73, 55, 35, 0.32);
+      background: #D8B8A5;
+    }
+
+    .web-storefront-window span:nth-child(2) { background: #B9C8B1; }
+    .web-storefront-window span:nth-child(3) { background: #D9C2D1; }
+    .web-storefront-window span:nth-child(4) { background: #E8D5A8; }
+
+    .web-storefront-base {
+      width: 100%;
+      height: 14px;
+      display: grid;
+      place-items: center;
+      border: 1px solid #493723;
+      border-top: 0;
+      background: #493723;
+      color: #FFF8F1;
+      font: 700 6px 'JetBrains Mono', monospace;
+      letter-spacing: 0.04em;
+    }
+
+    .web-attachment-category {
+      max-width: 100%;
+      white-space: normal;
+      font-size: 9px;
+      line-height: 1.2;
+    }
+
+    .web02-preview-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .web02-topic-strip {
+      display: flex;
+      flex: 1;
+      min-width: 0;
+      gap: 6px;
+      overflow-x: auto;
+      padding: 3px 0;
+      scrollbar-width: none;
+      white-space: nowrap;
+    }
+
+    .web02-topic-strip::-webkit-scrollbar { display: none; }
+
+    .web02-topic-chip {
+      flex: none;
+      padding: 4px 6px;
+      border: 1px solid rgba(10, 15, 29, 0.35);
+      background: rgba(255, 255, 255, 0.62);
+      color: #0A0F1D;
+      font: 700 8px 'JetBrains Mono', monospace;
+    }
+
+    .web02-preview-action {
+      flex: none;
+      padding: 6px 8px;
+      background: #0A0F1D;
+      color: #FFFFFF;
+      font: 700 9px 'JetBrains Mono', monospace;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 640px) {
+      .project-cover {
+        height: auto;
+        min-height: 18rem;
+        gap: 16px;
+      }
+
+      .project-cover--modal {
+        min-height: 0;
+        height: auto;
+        gap: 8px;
+        padding: 14px;
+      }
+
+      .project-cover .text-3xl {
+        max-width: 100%;
+        font-size: 24px;
+        line-height: 1.1;
+      }
+
+      .project-cover--modal .text-3xl {
+        font-size: 20px;
+      }
+
+      .project-cover .bg-navy {
+        flex-shrink: 0;
+        padding-right: 7px;
+        padding-left: 7px;
+        font-size: 8px;
+        white-space: nowrap;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .project-cover .text-3xl {
+        font-size: 20px;
+      }
+    }
+
+    #projectGrid .project-summary {
+      color: #4B5563;
+    }
+
+    html[data-theme="dark"] #projectGrid .project-summary {
+      color: #CBD5E1 !important;
+    }
+
+    .project-thumbnail {
+      min-height: 248px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(180px, 0.7fr);
+      align-items: stretch;
+      gap: 24px;
+      padding: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(10, 15, 29, 0.55);
+    }
+
+    .project-thumbnail-copy {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .project-thumbnail-kicker,
+    .project-thumbnail-subtitle,
+    .project-thumbnail-meta,
+    .project-thumbnail-action,
+    .project-art-header,
+    .project-art-footer {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .project-thumbnail-kicker {
+      color: #334155;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .project-thumbnail-heading {
+      min-width: 0;
+      margin: auto 0;
+    }
+
+    .project-thumbnail-title {
+      color: #0A0F1D;
+      font-family: 'Syne', sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1.08;
+      overflow-wrap: normal;
+      word-break: normal;
+      hyphens: none;
+    }
+
+    .project-thumbnail-subtitle {
+      margin-top: 8px;
+      color: #334155;
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    .project-thumbnail-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      color: #334155;
+      font-size: 9px;
+    }
+
+    .project-thumbnail-action {
+      padding: 6px 8px;
+      background: #0A0F1D;
+      color: #FFFFFF;
+      font-size: 9px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .project-thumbnail-art {
+      min-width: 0;
+      min-height: 204px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(10, 15, 29, 0.28);
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: 4px 4px 0 rgba(10, 15, 29, 0.12);
+    }
+
+    .project-art-header,
+    .project-art-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      color: #334155;
+      font-size: 9px;
+      font-weight: 700;
+    }
+
+    .project-art-live {
+      padding: 3px 6px;
+      background: #D93232;
+      color: #FFFFFF;
+    }
+
+    .project-camera-grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 6px;
+    }
+
+    .project-camera-feed {
+      position: relative;
+      min-width: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 5px 2px;
+      overflow: hidden;
+      border: 1px solid rgba(10, 15, 29, 0.35);
+      background: linear-gradient(145deg, #A7C9EA, #40648C);
+    }
+
+    .project-camera-feed:nth-child(2) {
+      background: linear-gradient(145deg, #C8D6C5, #58745D);
+    }
+
+    .project-camera-feed:nth-child(3) {
+      background: linear-gradient(145deg, #E8C5AA, #8B5F52);
+    }
+
+    .project-camera-feed::before {
+      position: absolute;
+      top: 18%;
+      left: calc(50% - 11px);
+      width: 22px;
+      height: 22px;
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      content: '';
+      box-shadow: 0 20px 0 9px rgba(10, 15, 29, 0.36);
+    }
+
+    .project-camera-feed span {
+      position: relative;
+      padding: 2px 3px;
+      background: rgba(10, 15, 29, 0.78);
+      color: #FFFFFF;
+      font: 700 7px 'JetBrains Mono', monospace;
+    }
+
+    .project-audio-meter {
+      height: 12px;
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+    }
+
+    .project-audio-meter i {
+      width: 5px;
+      height: 40%;
+      background: #2563EB;
+    }
+
+    .project-audio-meter i:nth-child(2n) { height: 85%; }
+    .project-audio-meter i:nth-child(3n) { height: 62%; }
+
+    .project-auto-panel {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .project-auto-gauge {
+      width: 104px;
+      aspect-ratio: 1;
+      display: grid;
+      place-content: center;
+      border: 8px solid rgba(37, 99, 235, 0.18);
+      border-top-color: #2563EB;
+      border-right-color: #FF5722;
+      border-radius: 50%;
+      text-align: center;
+    }
+
+    .project-auto-gauge strong {
+      color: #0A0F1D;
+      font: 800 25px 'Syne', sans-serif;
+      line-height: 1;
+    }
+
+    .project-auto-gauge span {
+      margin-top: 4px;
+      color: #334155;
+      font: 700 8px 'JetBrains Mono', monospace;
+    }
+
+    .project-auto-bars {
+      width: 100%;
+      display: flex;
+      gap: 4px;
+    }
+
+    .project-auto-bars i {
+      height: 5px;
+      flex: 1;
+      background: #2563EB;
+    }
+
+    .project-auto-bars i:nth-last-child(-n+2) { background: #CBD5E1; }
+
+    .project-cinema-console {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .project-cinema-row {
+      display: grid;
+      grid-template-columns: 40px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 6px;
+      border: 1px solid rgba(10, 15, 29, 0.16);
+      background: rgba(255, 255, 255, 0.7);
+      color: #0A0F1D;
+      font: 700 8px 'JetBrains Mono', monospace;
+    }
+
+    .project-cinema-row i {
+      height: 5px;
+      background: linear-gradient(90deg, #2563EB 68%, #CBD5E1 68%);
+    }
+
+    .project-cinema-row b {
+      color: #16844B;
+      font-size: 7px;
+    }
+
+    .project-vanilla-packages {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .project-vanilla-pack {
+      width: 43px;
+      height: 105px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      border: 1px solid #806344;
+      background: linear-gradient(160deg, #F5E7C8, #D7BD8C);
+      box-shadow: 3px 4px 0 rgba(73, 53, 33, 0.16);
+    }
+
+    .project-vanilla-pack:nth-child(2) {
+      height: 125px;
+      background: linear-gradient(160deg, #FAF2DE, #CFAE6F);
+    }
+
+    .project-vanilla-pack i {
+      width: 3px;
+      height: 36px;
+      border-radius: 3px;
+      background: #4D3525;
+      box-shadow: 5px 3px 0 #75533A, -5px 9px 0 #62452F;
+    }
+
+    .project-vanilla-pack span {
+      color: #493723;
+      font: 700 6px 'JetBrains Mono', monospace;
+    }
+
+    .project-parking-grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      padding: 6px;
+    }
+
+    .project-parking-slot {
+      display: grid;
+      place-items: center;
+      border: 1px dashed #16844B;
+      background: rgba(22, 132, 75, 0.12);
+      color: #12673C;
+      font: 700 9px 'JetBrains Mono', monospace;
+    }
+
+    .project-parking-slot.is-occupied {
+      border-color: #D97706;
+      background: rgba(217, 119, 6, 0.14);
+      color: #8A4B06;
+    }
+
+    @media (max-width: 1024px) {
+      .project-thumbnail {
+        min-height: 220px;
+        grid-template-columns: minmax(0, 1fr) minmax(128px, 36%);
+        gap: 12px;
+        padding: 14px;
+      }
+
+      .project-thumbnail-title { font-size: 24px; }
+      .project-thumbnail-subtitle { font-size: 9px; }
+      .project-thumbnail-meta { font-size: 8px; }
+      .project-thumbnail-meta > span:first-child { display: none; }
+      .project-thumbnail-action { padding: 5px 6px; font-size: 8px; }
+      .project-thumbnail-art { min-height: 188px; padding: 9px; gap: 8px; }
+      .project-art-header, .project-art-footer { font-size: 7px; }
+      .project-auto-gauge { width: 74px; border-width: 6px; }
+      .project-auto-gauge strong { font-size: 19px; }
+      .project-cinema-row { grid-template-columns: 34px minmax(0, 1fr) auto; gap: 4px; padding: 6px 4px; font-size: 7px; }
+      .project-vanilla-pack { width: 34px; height: 85px; }
+      .project-vanilla-pack:nth-child(2) { height: 102px; }
+    }
+
+    @media (max-width: 640px) {
+      .project-thumbnail {
+        min-height: 0;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+      }
+
+      .project-thumbnail-copy { min-height: 140px; }
+      .project-thumbnail-title { font-size: 26px; }
+      .project-thumbnail-subtitle { font-size: 10px; }
+      .project-thumbnail-art { min-height: 180px; }
+    }
+
+    html[data-theme="dark"] #caseStudyModal .text-slate-700 {
+      color: #CBD5E1 !important;
+    }
+
+    html[data-theme="dark"] .bg-white,
+    html[data-theme="dark"] [class~="bg-white/95"],
+    html[data-theme="dark"] [class~="bg-white/90"],
+    html[data-theme="dark"] [class~="bg-[#FAFAF7]"],
+    html[data-theme="dark"] [class~="bg-[#FAFAF7]/90"],
+    html[data-theme="dark"] [class~="bg-[#F7F7F2]"],
+    html[data-theme="dark"] [class~="bg-[#E8ECF2]"],
+    html[data-theme="dark"] .bg-gray-50,
+    html[data-theme="dark"] .bg-gray-100 {
+      background-color: #151E2D !important;
+    }
+
+    html[data-theme="dark"] .bg-gray-200 {
+      background-color: #263449 !important;
+    }
+
+    html[data-theme="dark"] [class*="border-gray-"],
+    html[data-theme="dark"] .border-navy {
+      border-color: #3A475B !important;
+    }
+
+    html[data-theme="dark"] [class*="hover:bg-gray-"]:hover {
+      background-color: #253144 !important;
+    }
+
+    html.theme-transition body,
+    html.theme-transition body [class*="bg-"],
+    html.theme-transition body [class*="text-"],
+    html.theme-transition body [class*="border-"],
+    html.theme-transition body svg {
+      transition-property: background-color, color, border-color, fill, stroke;
+      transition-duration: 360ms;
+      transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html.theme-transition body,
+      html.theme-transition body [class*="bg-"],
+      html.theme-transition body [class*="text-"],
+      html.theme-transition body [class*="border-"],
+      html.theme-transition body svg {
+        transition-duration: 0.01ms;
+      }
+    }
+
+    .font-mono-code {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .font-display {
+      font-family: 'Syne', sans-serif;
+    }
+
+    @keyframes spinSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes spinRev {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+    .animate-spin-slow {
+      animation: spinSlow 32s linear infinite;
+    }
+    .animate-spin-rev {
+      animation: spinRev 24s linear infinite;
+    }
+
+    ::selection {
+      background: #0A0F1D;
+      color: #FFFFFF;
+    }
+
+    html[data-theme="dark"] ::selection {
+      background: #2563EB;
+      color: #FFFFFF;
+    }
+      .cert-slider { margin-top: 1.5rem; border-top: 1px dashed #d1d5db; padding-top: 1.25rem; }
+
+    .cert-slider__topline, .cert-slider__controls { display: flex; align-items: center; justify-content: space-between; gap: 1rem; font-family: monospace; font-size: .75rem; }
+    .cert-slider__topline { margin-bottom: .75rem; color: #6b7280; }
+    .cert-slider__viewport { overflow: hidden; border: 1px solid #0A0F1D; background: #f7f7f2; }
+    .cert-slider__slide { display: none; min-height: 220px; }
+    .cert-slider__slide.is-active { display: flex; align-items: center; justify-content: center; }
+    .cert-slider__slide img { display: block; width: 100%; max-height: min(68vh, 680px); object-fit: contain; background: #f7f7f2; }
+    .cert-slider__slide iframe { display: block; width: 100%; height: min(68vh, 680px); min-height: 360px; border: 0; background: #fff; }
+    .cert-slider__controls { margin-top: .75rem; color: #0A0F1D; }
+    .cert-slider__button { border: 1px solid #0A0F1D; background: #0A0F1D; color: #fff; padding: .55rem .8rem; font-family: monospace; font-size: .75rem; font-weight: 700; letter-spacing: .04em; cursor: pointer; transition: background-color .2s ease, border-color .2s ease; }
+    .cert-slider__button:hover, .cert-slider__button:focus-visible { background: #2563EB; border-color: #2563EB; color: #fff; }
+    .cert-slider__counter { color: #6b7280; text-align: center; }
+    @media (max-width: 640px) {
+      .cert-slider__controls { flex-wrap: wrap; }
+      .cert-slider__button { flex: 1; }
+      .cert-slider__counter { order: -1; width: 100%; }
+      .cert-slider__slide iframe { min-height: 300px; }
+    }
+    #timeline { width: min(82vw, 1200px); padding-left: 0; padding-right: 0; }
+    #timeline .cv-frame { display: block; width: 100%; height: min(84vh, 950px); min-height: 720px; border: 0; background: #fff; }
+    @media (max-width: 768px) {
+      #timeline { width: 100%; padding-left: 1rem; padding-right: 1rem; }
+      #timeline .cv-frame { min-height: 760px; }
+    }
+
+    /* Mobile layout refinements */
+    @media (max-width: 640px) {
+      body { padding-bottom: env(safe-area-inset-bottom); }
+      header { padding-top: max(.75rem, env(safe-area-inset-top)); }
+      header .max-w-7xl { gap: .5rem; }
+      header .max-w-7xl > div:first-child { min-width: 0; max-width: calc(100vw - 5.5rem); }
+      header .max-w-7xl > div:first-child > span:nth-child(2) { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      #themeToggle { min-width: 44px; min-height: 44px; justify-content: center; padding: .65rem; }
+      #themeToggleLabel { display: none; }
+
+      #hero { min-height: auto; padding-top: 6.5rem; padding-bottom: 6rem; }
+      #hero h1 { font-size: clamp(2.25rem, 11vw, 3.5rem); overflow-wrap: anywhere; }
+      #hero .my-auto { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+      #hero .my-auto > div:first-child { gap: 1.25rem; }
+      #hero .my-auto > div:first-child > div:last-child { width: 100%; }
+      #hero .my-auto > div:first-child > div:last-child a { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; }
+      #hero figure { max-width: min(78vw, 300px); }
+
+      #mobileDrawer { padding: 1rem; padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+      #mobileDrawer > div { max-height: min(75vh, 520px); overflow-y: auto; }
+      #mobileDrawer a, #mobileDrawer button { min-height: 48px; }
+      nav[aria-label="Command Bar"] { bottom: max(1rem, env(safe-area-inset-bottom)); }
+      nav[aria-label="Command Bar"] > div:last-child > button { min-height: 48px; }
+
+      #work article { padding: 1rem; }
+      #projectGrid { gap: 1.25rem; }
+      #timeline { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+      #timeline .cv-frame { height: 72vh; min-height: 560px; }
+      #timeline > div:first-child > a { min-height: 44px; }
+      #contact .space-y-3 > div { align-items: flex-start; flex-direction: column; gap: .5rem; overflow-wrap: anywhere; }
+
+      #caseStudyModal { align-items: flex-start; padding: max(.75rem, env(safe-area-inset-top)) .75rem max(.75rem, env(safe-area-inset-bottom)); }
+      #caseStudyModal > div { margin: 0; max-height: calc(100dvh - 1.5rem); }
+      #caseStudyModal > div > .p-6 { max-height: calc(100dvh - 10rem); }
+    }
+
+    @media (max-width: 380px) {
+      #hero { padding-left: 1rem; padding-right: 1rem; }
+      #hero .my-auto > div:first-child > div:last-child { flex-direction: column; align-items: stretch; }
+      #hero .my-auto > div:first-child > div:last-child a { width: 100%; }
+      #mobileDrawer .grid { grid-template-columns: 1fr; }
+      .project-thumbnail { padding: 12px; }
+      .cert-slider__topline { font-size: .65rem; }
+    }
+</style>
+  <script>
+    try {
+      const savedTheme = localStorage.getItem('ikhram-theme');
+      if (savedTheme === 'dark' || savedTheme === 'light') {
+        document.documentElement.dataset.theme = savedTheme;
+      }
+    } catch (error) {
+      document.documentElement.dataset.theme = 'light';
+    }
+  </script>
+</head>
+<body class="bg-blueprint-grid min-h-screen relative antialiased selection:bg-navy selection:text-white">
+
+  <!-- Top Metadata Bar -->
+  <header class="fixed top-0 left-0 w-full z-40 px-4 md:px-8 py-3 pointer-events-none">
+    <div class="max-w-7xl mx-auto flex items-center justify-between text-xs font-mono-code">
+      <div class="flex items-center gap-3 pointer-events-auto bg-[#FAFAF7]/90 backdrop-blur-md px-3 py-1.5 rounded-md border border-gray-200 shadow-xs">
+        <span class="inline-block w-2 h-2 rounded-full bg-freshLime animate-pulse"></span>
+        <span class="font-bold text-navy tracking-wider">IKHRAM Bilal W</span>
+        <span class="hidden sm:inline text-gray-500">// </span>
+      </div>
+
+      <div class="flex items-center gap-3 pointer-events-auto">
+        <div class="hidden md:flex items-center gap-4 bg-[#FAFAF7]/90 backdrop-blur-md px-3 py-1.5 rounded-md border border-gray-200 shadow-xs">
+          <span class="text-gray-500">SEMARANG, ID</span>
+          <span id="liveClock" class="text-navy font-semibold">18:22:00 WIB</span>
+        </div>
+        <button
+          id="themeToggle"
+          type="button"
+          onclick="toggleTheme()"
+          aria-label="Aktifkan tema gelap"
+          aria-pressed="false"
+          title="Ganti tema warna"
+          class="flex items-center gap-2 bg-white/90 backdrop-blur-md px-3 py-2 rounded-md border border-gray-200 text-navy font-mono-code text-[10px] font-bold tracking-wider shadow-xs transition-colors hover:bg-gray-100"
+        >
+          <svg id="themeMoonIcon" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+          <svg id="themeSunIcon" class="hidden w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364 6.364-1.414-1.414M7.05 7.05 5.636 5.636m12.728 0L16.95 7.05M7.05 16.95l-1.414 1.414M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <span id="themeToggleLabel">DARK</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Floating Command Bar -->
+  <nav aria-label="Command Bar" class="fixed bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-40">
+    <div class="hidden md:flex items-center gap-1.5 p-1.5 bg-white/95 backdrop-blur-xl border-2 border-navy rounded-full shadow-[0_12px_32px_rgba(10,15,29,0.15)]">
+      <div class="pl-3 pr-2 py-1 text-[11px] font-mono-code font-bold tracking-widest text-gray-500 border-r border-gray-200">
+        CMD:
+      </div>
+      <a href="#hero" class="nav-link px-4 py-2 rounded-full text-xs font-mono-code transition-all duration-200 hover:bg-gray-100 flex items-center gap-1.5 text-navy font-semibold" data-target="hero">
+        <span class="text-[10px] text-gray-400">[01]</span><span>HOME</span>
+      </a>
+      <a href="#about" class="nav-link px-4 py-2 rounded-full text-xs font-mono-code transition-all duration-200 hover:bg-gray-100 flex items-center gap-1.5 text-navy" data-target="about">
+        <span class="text-[10px] text-gray-400">[02]</span><span>ABOUT</span>
+      </a>
+      <a href="#skills" class="nav-link px-4 py-2 rounded-full text-xs font-mono-code transition-all duration-200 hover:bg-gray-100 flex items-center gap-1.5 text-navy" data-target="skills">
+        <span class="text-[10px] text-gray-400">[03]</span><span>SKILLS</span>
+      </a>
+      <a href="#work" class="nav-link px-4 py-2 rounded-full text-xs font-mono-code transition-all duration-200 hover:bg-gray-100 flex items-center gap-1.5 text-navy" data-target="work">
+        <span class="text-[10px] text-gray-400">[04]</span><span>WORK</span>
+      </a>
+      <a href="#timeline" class="nav-link px-4 py-2 rounded-full text-xs font-mono-code transition-all duration-200 hover:bg-gray-100 flex items-center gap-1.5 text-navy" data-target="timeline">
+        <span class="text-[10px] text-gray-400">[05]</span><span>CV</span>
+      </a>
+      <a href="#contact" class="nav-link px-4 py-2 rounded-full text-xs font-mono-code transition-all duration-200 hover:bg-gray-100 flex items-center gap-1.5 text-navy" data-target="contact">
+        <span class="text-[10px] text-gray-400">[06]</span><span>CONTACT</span>
+      </a>
+      </button>
+    </div>
+
+    <!-- Mobile Button -->
+    <div class="md:hidden">
+      <button onclick="toggleMobileNav(true)" class="flex items-center gap-2 px-5 py-3 rounded-full bg-navy text-white shadow-xl border-2 border-gray-300 font-mono-code text-xs">
+        <span class="w-2 h-2 rounded-full bg-freshLime animate-pulse"></span>
+        <span class="font-bold tracking-wider">COMMAND BAR</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div id="mobileDrawer" class="hidden fixed inset-0 z-50 bg-navy/60 backdrop-blur-sm flex items-end p-4" onclick="toggleMobileNav(false)">
+    <div class="w-full bg-white rounded-2xl border-2 border-navy p-5 shadow-2xl space-y-4" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between pb-3 border-b border-gray-200 font-mono-code text-xs">
+        <span class="font-bold text-navy">SYS_NAV // SELECT TARGET</span>
+        <button onclick="toggleMobileNav(false)" class="px-2 py-1 bg-gray-100 rounded text-gray-700 font-bold">CLOSE</button>
+      </div>
+      <div class="grid grid-cols-2 gap-2 font-mono-code text-xs">
+        <a href="#hero" onclick="toggleMobileNav(false)" class="p-3 border border-gray-200 bg-gray-50 rounded-xl hover:border-navy">
+          <span class="text-[var(--accent-orange)] block">[01]</span><strong>INDEX</strong>
+        </a>
+        <a href="#about" onclick="toggleMobileNav(false)" class="p-3 border border-gray-200 bg-gray-50 rounded-xl hover:border-navy">
+          <span class="text-[var(--accent-orange)] block">[02]</span><strong>ABOUT</strong>
+        </a>
+        <a href="#skills" onclick="toggleMobileNav(false)" class="p-3 border border-gray-200 bg-gray-50 rounded-xl hover:border-navy">
+          <span class="text-[var(--accent-orange)] block">[03]</span><strong>SKILLS</strong>
+        </a>
+        <a href="#work" onclick="toggleMobileNav(false)" class="p-3 border border-gray-200 bg-gray-50 rounded-xl hover:border-navy">
+          <span class="text-[var(--accent-orange)] block">[04]</span><strong>WORK</strong>
+        </a>
+        <a href="#timeline" onclick="toggleMobileNav(false)" class="p-3 border border-gray-200 bg-gray-50 rounded-xl hover:border-navy">
+          <span class="text-[var(--accent-orange)] block">[05]</span><strong>CV</strong>
+        </a>
+        <a href="#contact" onclick="toggleMobileNav(false)" class="p-3 border border-gray-200 bg-gray-50 rounded-xl hover:border-navy">
+          <span class="text-[var(--accent-orange)] block">[06]</span><strong>CONTACT</strong>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO SECTION -->
+  <section id="hero" class="relative min-h-[92vh] flex flex-col justify-between pt-24 pb-16 px-4 md:px-12 max-w-7xl mx-auto">
+    <!-- Top Metadata Ribbon -->
+    <div class="flex flex-wrap items-center justify-between gap-4 border-b border-gray-300 pb-4 font-mono-code text-xs text-gray-600">
+      <div class="flex items-center gap-2">
+        <span class="text-vividOrange font-bold">01 //</span>
+        <span class="font-bold text-navy tracking-widest uppercase">SYSTEMS // SECURITY // CURIOSITY</span>
+      </div>
+      <div class="flex items-center gap-6">
+        <span class="hidden sm:inline-flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-freshLime animate-ping"></span>
+          <span class="text-navy font-semibold">OPEN_FOR_COLLABORATION</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Main Asymmetric Composition -->
+    <div class="my-auto py-10 md:py-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <!-- Left Column Typography -->
+      <div class="lg:col-span-7 space-y-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1 border border-navy text-xs font-mono-code text-navy bg-white">
+          <span class="w-1.5 h-1.5 bg-electric rounded-full"></span>
+          <span>SMKN 7 SEMARANG // SIJA</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-display font-extrabold tracking-tight text-navy leading-[1.05]">
+          Ikhram Bilal <br>
+          <span class="relative inline-block italic font-serif font-normal text-electric">
+            Widhyadana
+            <span class="absolute left-0 -bottom-2 w-full h-[6px] bg-brightYellow -z-10 transform -rotate-1"></span>
+          </span>
+        </h1>
+
+        <p class="text-base sm:text-lg text-gray-600 max-w-xl leading-relaxed">
+          I'm a SIJA student at SMKN 7 Semarang, exploring cybersecurity, networking, and IoT. I enjoy learning with others and turning new ideas into practical projects.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="pt-4 flex flex-wrap items-center gap-4">
+          <a href="#work" class="group relative px-7 py-3.5 bg-navy text-white font-mono-code text-xs font-bold tracking-wider rounded-none overflow-hidden transition-all duration-300 hover:shadow-[4px_4px_0px_#2563EB]">
+            <span class="relative z-10 flex items-center gap-2">
+              <span>EXPLORE_ARCHIVE</span>
+              <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+            </span>
+          </a>
+          <a href="#contact" class="px-6 py-3.5 bg-transparent border-2 border-navy text-navy font-mono-code text-xs font-bold tracking-wider rounded-none hover:bg-gray-100 hover:shadow-[4px_4px_0px_#0A0F1D]">
+            [INITIATE_CONTACT]
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: User Portrait -->
+      <div class="lg:col-span-5 flex justify-center items-center">
+        <figure class="group relative w-full max-w-[340px] aspect-[4/5] overflow-hidden border-2 border-navy bg-[#E8ECF2] shadow-[12px_12px_0px_#FFD600] transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-[16px_16px_0px_#2563EB]">
+          <div class="absolute inset-0 bg-blueprint-grid flex flex-col items-center justify-center gap-3 text-navy">
+            <span class="font-display text-5xl font-extrabold">IBW</span>
+            <span class="font-mono-code text-[10px] font-bold tracking-widest">ADD YOUR PHOTO</span>
+          </div>
+          <img
+            src="../public/profile.jpg"
+            alt="Foto profil Ikhram"
+            class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+            onerror="this.style.display='none'"
+          >
+        </figure>
+      </div>
+    </div>
+
+
+
+  <!-- ABOUT SECTION (PROFILE DOSSIER) -->
+  <section id="about" class="py-20 px-4 md:px-12 max-w-7xl mx-auto border-t border-gray-300">
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-12 font-mono-code text-xs">
+      <div class="flex items-center gap-2">
+        <span class="text-electric font-bold">02 //</span>
+        <span class="font-bold text-navy tracking-widest uppercase">PROFILE DOSSIER</span>
+        
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <!-- Left Narrative -->
+      <div class="lg:col-span-7 space-y-6">
+        <div class="group w-fit">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-navy leading-tight transition-all duration-300 group-hover:translate-x-1 group-hover:text-electric">ABOUT ME</h2>
+        <div class="w-16 h-1 bg-electric transition-all duration-300 group-hover:w-32"></div>
+      </div>
+
+        <div class="space-y-4 text-base sm:text-lg text-gray-600 leading-relaxed">
+          <p>
+            I am an Information Systems, Networking, and Application (SIJA) student at SMKN 7 Semarang with a strong enthusiasm for continuously exploring new technologies, particularly within the field of Cybersecurity. I am highly drawn to this sector due to its crucial, strategic nature and its vital behind-the-scenes impact.
+          </p>
+          <p>
+            Professionally, I thrive in collaborative work environments, as they foster the exchange of diverse perspectives alongside peers with a shared vision.
+          </p>
+          <p>
+            Outside of my academic pursuits, I maintain a routine of walking, which serves as an effective method for preserving mental clarity and focus.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Right: Personal Profile Quick Facts -->
+      <div class="lg:col-span-5">
+        <div class="bg-white border-2 border-navy p-6 sm:p-8 shadow-[6px_6px_0px_#0A0F1D]">
+          <h3 class="font-mono-code text-xs uppercase tracking-wider text-gray-500 mb-5">
+            PERSONAL PROFILE // QUICK FACTS
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono-code text-xs">
+            <div class="min-h-24 p-3 bg-[#FAFAF7] border border-gray-300 flex flex-col">
+              <span class="text-gray-400">Born</span>
+              <span class="font-bold text-navy mt-1">06 January 2009</span>
+            </div>
+            <div class="min-h-24 p-3 bg-[#FAFAF7] border border-gray-300 flex flex-col">
+              <span class="text-gray-400">School</span>
+              <span class="font-bold text-navy mt-1">SMKN 7 Semarang (SIJA Major)</span>
+            </div>
+            <div class="min-h-24 p-3 bg-[#FAFAF7] border border-gray-300 flex flex-col">
+              <span class="text-gray-400">Hobby</span>
+              <span class="font-bold text-navy mt-1 leading-relaxed">Photography<br>Watching films<br>Playing games<br>Curious about new things</span>
+            </div>
+            <div class="min-h-24 p-3 bg-[#FAFAF7] border border-gray-300 flex flex-col">
+              <span class="text-gray-400">Interests</span>
+              <span class="font-bold text-navy mt-1 leading-relaxed">Cybersecurity<br>Photography<br>Film making<br>Drifter / Racer</span>
+            </div>
+          </div>
+        </div>
+      </div>    </div>
+  </section>
+
+  <!-- SKILLS SECTION (SKILL CONSTELLATION) -->
+  <section id="skills" class="py-20 px-4 md:px-12 max-w-7xl mx-auto border-t border-gray-300">
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-8 font-mono-code text-xs">
+      <div class="flex items-center gap-2">
+        <span class="text-vividOrange font-bold">03 //</span>
+        <span class="font-bold text-navy tracking-widest uppercase">SKILL CONSTELLATION</span>
+        
+      </div>
+
+      <div class="flex items-center gap-1 bg-white p-1 border border-gray-300">
+        <button onclick="filterSkills('ALL')" class="skill-cat-btn px-3 py-1 font-mono-code text-xs bg-navy text-white font-bold" data-cat="ALL">[ALL]</button>
+        <button onclick="filterSkills('BUILD')" class="skill-cat-btn px-3 py-1 font-mono-code text-xs" style="color:#2563EB;border:1px solid #2563EB" data-cat="BUILD">[BUILD]</button>
+        <button onclick="filterSkills('DESIGN')" class="skill-cat-btn px-3 py-1 font-mono-code text-xs" style="color:#A855F7;border:1px solid #A855F7" data-cat="DESIGN">[DESIGN]</button>
+        <button onclick="filterSkills('THINK')" class="skill-cat-btn px-3 py-1 font-mono-code text-xs" style="color:#10B981;border:1px solid #10B981" data-cat="THINK">[THINK]</button>
+        <button onclick="filterSkills('CINEMATOGRAPHY')" class="skill-cat-btn px-3 py-1 font-mono-code text-xs" style="color:#0F766E;border:1px solid #0F766E" data-cat="CINEMATOGRAPHY">[CINEMATOGRAPHY]</button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <!-- Constellation Board -->
+      <div class="lg:col-span-8 bg-white border-2 border-navy p-4 sm:p-6 shadow-[6px_6px_0px_#0A0F1D] relative min-h-[460px] flex flex-col justify-between overflow-hidden">
+        <div class="absolute inset-0 bg-blueprint-grid opacity-70 pointer-events-none"></div>
+
+        <div class="relative z-10 flex items-center justify-between text-[11px] font-mono-code text-gray-600 border-b border-gray-200 pb-3">
+          <span class="flex items-center gap-1.5">
+            <span id="skillBadgeDot" class="w-2 h-2 rounded-full bg-electric"></span>
+            <span id="skillBadgeName">NODE_PROJECTION: TypeScript</span>
+          </span>
+          
+        </div>
+
+        <!-- Node Placement Surface -->
+        <div id="constellationContainer" class="relative z-10 w-full h-[360px] my-2 select-none">
+          <!-- SVG lines drawn via script -->
+          <svg id="constellationSvg" class="w-full h-full absolute inset-0 overflow-visible pointer-events-none"></svg>
+          <div id="nodesLayer" class="relative w-full h-full"></div>
+        </div>
+
+        <div class="relative z-10 pt-3 border-t border-gray-200 flex flex-wrap items-center justify-between font-mono-code text-[11px] text-gray-600">
+          <span>[HOVER ANY NODE TO INSPECT CONSTELLATION SYNAPSE]</span>
+          <span class="text-vividOrange font-bold">16 SKILL NODES ACTIVE</span>
+        </div>
+      </div>
+
+      <!-- Skill Dossier Inspector Panel -->
+      <div class="lg:col-span-4 bg-white border border-gray-300 p-6 space-y-6 shadow-xs">
+        <div>
+          <div class="flex items-center justify-between font-mono-code text-xs mb-2">
+            <span id="inspectorCategory" class="px-2 py-0.5 font-bold text-white bg-electric">BUILD</span>
+            <span id="inspectorLevel" class="text-gray-400 font-bold">Core Engine</span>
+          </div>
+          <h3 id="inspectorTitle" class="text-2xl font-display font-bold text-electric">TypeScript</h3>
+          <div id="inspectorMeta" class="font-mono-code text-xs text-gray-400 mt-1">Strict Mode // Generics // TSX</div>
+        </div>
+
+        <div class="border-t border-gray-200 pt-4">
+          <h4 class="font-mono-code text-xs uppercase tracking-wider text-gray-500 mb-2">APPLIED CAPABILITY</h4>
+          <p id="inspectorDesc" class="text-base text-navy leading-relaxed">
+            Strict typing, modular interfaces, and predictable data modeling for bulletproof web apps.
+          </p>
+        </div>
+
+        <div class="bg-[#FAFAF7] p-3 border border-dashed border-gray-300 text-[11px] font-mono-code text-gray-600">
+          <span class="text-freshLime font-bold">&bull; ZERO PERCENTAGE BARS:</span> Real-world skills are networked graphs of application, not arbitrary progress bars.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK SECTION (PROJECT ARCHIVE) -->
+  <section id="work" class="py-20 px-4 md:px-12 max-w-7xl mx-auto border-t border-gray-300">
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-12 font-mono-code text-xs">
+      <div class="flex items-center gap-2">
+        <span class="text-coral font-bold">04 //</span>
+        <span class="font-bold text-navy tracking-widest uppercase">PROJECT ARCHIVE</span>
+        
+      </div>
+
+    </div>
+
+    <!-- Asymmetric Editorial Grid -->
+    <div id="projectGrid" class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start"></div>
+  </section>
+
+
+  <!-- CURRICULUM VITAE SECTION -->
+  <section id="timeline" class="py-20 px-4 md:px-12 max-w-[96rem] mx-auto border-t border-gray-300">
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-8 font-mono-code text-xs">
+      <div class="flex items-center gap-2">
+        <span class="text-freshLime font-bold">05 //</span>
+        <span class="font-bold text-navy tracking-widest uppercase">CURRICULUM VITAE</span>
+      </div>
+      <a href="../public/cv-ikhram.html" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-navy text-white hover:bg-electric transition-colors flex items-center gap-2 font-bold tracking-wider">
+        <span>OPEN_CV [PRINT]</span>
+        <span>&rarr;</span>
+      </a>
+    </div>
+    <div class="overflow-hidden border-2 border-navy bg-[#202137] shadow-[8px_8px_0px_#D7B33F]">
+      <iframe src="../public/cv-ikhram.html" title="Curriculum Vitae Ikhram Bilal Widhyadana" class="cv-frame"></iframe>
+    </div>
+  </section>
+  <!-- CONTACT SECTION (OPEN CHANNEL) -->
+  <section id="contact" class="py-24 px-4 md:px-12 max-w-7xl mx-auto border-t border-gray-300">
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-12 font-mono-code text-xs">
+      <div class="flex items-center gap-2">
+        <span class="text-brightYellow font-bold">06 //</span>
+        <span class="font-bold text-navy tracking-widest uppercase">CONTACT</span>
+        
+      </div>
+      <div class="flex items-center gap-2 text-gray-600">
+        <span class="w-2 h-2 rounded-full bg-freshLime animate-ping"></span>
+        <span>LISTENING ON ALL FREQUENCIES</span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <div class="lg:col-span-6 space-y-6">
+        <h2 class="text-2xl sm:text-5xl lg:text-4xl xl:text-[2.75rem] font-display font-extrabold text-navy leading-[1.08]">
+          LET'S MAKE <br>
+          <span class="italic font-serif font-normal text-vividOrange">SOMETHING</span> <br>
+          INTERESTING.
+        </h2>
+        <p class="text-base sm:text-lg text-gray-600 max-w-md leading-relaxed">
+          Whether you want to build an unconventional web interface, prototype an IoT sensor system, or discuss creative video direction, my channel is always open.
+        </p>
+
+        <div class="pt-6 space-y-3 font-mono-code text-xs">
+          <div class="p-3.5 bg-white border border-gray-300 flex items-center justify-between">
+            <span class="text-gray-400">DIRECT_EMAIL:</span>
+            <a href="mailto:wikhrambilal79@gmail.com" class="font-bold text-electric hover:underline">wikhrambilal79@gmail.com</a>
+          </div>
+          <div class="p-3.5 bg-white border border-gray-300 flex items-center justify-between">
+            <span class="text-gray-400">INSTAGRAM:</span>
+            <a href="https://www.instagram.com/ikh.ram169/" target="_blank" rel="noopener noreferrer" class="font-bold text-navy hover:underline">@ikh.ram169</a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Reactive Form -->
+      <div class="lg:col-span-6">
+        <div class="bg-white border-2 border-navy p-6 sm:p-8 shadow-[6px_6px_0px_#0A0F1D]">
+          <div class="flex items-center justify-between font-mono-code text-xs text-gray-500 pb-4 border-b border-gray-200 mb-6">
+            <span>COMMUNICATION_ENVELOPE</span>
+            <span id="fieldFocusStatus" class="text-vividOrange font-bold">AWAITING_INPUT</span>
+          </div>
+
+          <div id="formSuccessState" class="hidden py-12 text-center space-y-4">
+            <div class="w-16 h-16 mx-auto border-2 border-navy bg-brightYellow flex items-center justify-center text-2xl font-bold">
+              &check;
+            </div>
+            <h3 class="font-display font-bold text-2xl text-navy">TRANSMISSION DISPATCHED.</h3>
+            <p class="text-sm text-gray-600 font-mono-code max-w-sm mx-auto">
+              Handshake confirmed. Your message has entered the local queue. I'll get back to you shortly.
+            </p>
+            <button onclick="resetContactForm()" class="mt-4 px-6 py-2 bg-navy text-white font-mono-code text-xs font-bold hover:bg-electric">
+              SEND ANOTHER DISPATCH
+            </button>
+          </div>
+
+          <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-6 font-mono-code text-xs">
+            <div class="space-y-1.5">
+              <label class="block text-gray-600 font-bold">01 // YOUR NAME OR ENTITY:</label>
+              <input type="text" id="inputName" required placeholder="e.g. Maya Devi / Studio Collaborator"
+                class="w-full px-4 py-3 bg-[#F7F7F2] border-2 border-gray-300 focus:border-electric focus:bg-white text-navy outline-none"
+                onfocus="setFocusLabel('NAME')" onblur="setFocusLabel(null)">
+            </div>
+            <div class="space-y-1.5">
+              <label class="block text-gray-600 font-bold">02 // RETURN FREQUENCY (EMAIL):</label>
+              <input type="email" id="inputEmail" required placeholder="e.g. operator@domain.com"
+                class="w-full px-4 py-3 bg-[#F7F7F2] border-2 border-gray-300 focus:border-vividOrange focus:bg-white text-navy outline-none"
+                onfocus="setFocusLabel('EMAIL')" onblur="setFocusLabel(null)">
+            </div>
+            <div class="space-y-1.5">
+              <label class="block text-gray-600 font-bold">03 // PAYLOAD MESSAGE:</label>
+              <textarea id="inputMessage" required rows="4" placeholder="Describe your project, concept, or inquiry in detail..."
+                class="w-full px-4 py-3 bg-[#F7F7F2] border-2 border-gray-300 focus:border-freshLime focus:bg-white text-navy outline-none"
+                onfocus="setFocusLabel('MESSAGE')" onblur="setFocusLabel(null)"></textarea>
+            </div>
+            <button type="submit" id="submitBtn" class="w-full py-4 bg-navy hover:bg-electric text-white font-bold tracking-wider transition-all border-2 border-navy cursor-pointer">
+              TRANSMIT MESSAGE &rarr;
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="w-full border-t-2 border-navy bg-white py-12 px-4 md:px-12">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 font-mono-code text-xs">
+      <div class="flex items-center gap-3">
+        <button onclick="stampEgg()" class="w-8 h-8 border-2 border-navy bg-brightYellow font-bold flex items-center justify-center hover:rotate-12 transition-transform cursor-pointer" title="Interactive seal">
+          IB
+        </button>
+        <div>
+          <div class="font-bold text-navy">Ikhram Bilal Widhyadana // 2026</div>
+          <div class="text-[11px] text-gray-400">BUILT WITH CURIOSITY & PHYSICAL COGNITION</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-4">
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- CASE STUDY MODAL -->
+  <div id="caseStudyModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-navy/70 backdrop-blur-md overflow-y-auto" onclick="closeModal()">
+    <div class="relative w-full max-w-4xl bg-white border-3 border-navy shadow-[10px_10px_0px_#0A0F1D] my-8 overflow-hidden" onclick="event.stopPropagation()">
+      <div class="bg-navy text-white px-5 py-3 flex items-center justify-between font-mono-code text-xs">
+        <div class="flex items-center gap-3">
+          <span class="w-2.5 h-2.5 rounded-full bg-vividOrange inline-block"></span>
+          <span id="modalRefTitle" class="tracking-widest">PROJECT_ARCHIVE // REF</span>
+        </div>
+        <button onclick="closeModal()" class="px-2.5 py-1 bg-white text-navy font-bold text-xs hover:bg-brightYellow cursor-pointer">CLOSE [ESC]</button>
+      </div>
+
+      <div class="p-6 sm:p-10 space-y-8 max-h-[80vh] overflow-y-auto">
+        <div>
+          <div class="flex flex-wrap items-center gap-3 text-xs font-mono-code text-gray-500 mb-2">
+            <span id="modalCategory" class="px-2 py-0.5 bg-gray-100 font-bold text-navy border border-gray-300"></span>
+            <span id="modalYear"></span>
+            <span id="modalRole"></span>
+          </div>
+          <h2 id="modalTitle" class="text-3xl sm:text-5xl font-display font-bold text-navy leading-tight"></h2>
+          <p id="modalSubtitle" class="text-lg text-gray-500 font-serif italic mt-1"></p>
+        </div>
+
+        <div id="modalBanner"></div>
+
+        <div id="modalProjectNarrative" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-4 bg-gray-50 border border-gray-200">
+            <h3 class="font-mono-code text-xs font-bold text-coral uppercase mb-2">01. THE CHALLENGE</h3>
+            <p id="modalChallenge" class="text-sm text-slate-700 leading-relaxed"></p>
+          </div>
+          <div class="p-4 bg-gray-50 border border-gray-200">
+            <h3 class="font-mono-code text-xs font-bold text-electric uppercase mb-2">02. ARCHITECTURAL FIX</h3>
+            <p id="modalSolution" class="text-sm text-slate-700 leading-relaxed"></p>
+          </div>
+          <div class="p-4 bg-gray-50 border border-gray-200">
+            <h3 class="font-mono-code text-xs font-bold text-freshLime uppercase mb-2">03. MEASURABLE IMPACT</h3>
+            <p id="modalOutcome" class="text-sm text-slate-700 leading-relaxed"></p>
+          </div>
+        </div>
+
+        <div id="modalMediaGallery" class="hidden"></div>
+
+
+        <div class="pt-6 border-t border-gray-200 flex flex-wrap items-center justify-between gap-4">
+          <div class="font-mono-code text-xs text-gray-400">// PROJECT ARCHIVES</div>
+          <div class="flex items-center gap-3">
+            <button onclick="closeModal()" class="px-4 py-2 border border-gray-300 font-mono-code text-xs hover:border-black">RETURN</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ 
+  <!-- APPLICATION SCRIPTS -->
+  <script>
+    let themeTransitionTimer;
+
+    function setTheme(theme, animate = false) {
+      const isDark = theme === 'dark';
+      const root = document.documentElement;
+
+      if (animate) {
+        clearTimeout(themeTransitionTimer);
+        root.classList.add('theme-transition');
+        themeTransitionTimer = setTimeout(() => root.classList.remove('theme-transition'), 420);
+      }
+
+      root.dataset.theme = isDark ? 'dark' : 'light';
+
+      const button = document.getElementById('themeToggle');
+      const label = document.getElementById('themeToggleLabel');
+      const moonIcon = document.getElementById('themeMoonIcon');
+      const sunIcon = document.getElementById('themeSunIcon');
+
+      if (button && label && moonIcon && sunIcon) {
+        button.setAttribute('aria-label', isDark ? 'Aktifkan tema terang' : 'Aktifkan tema gelap');
+        button.setAttribute('aria-pressed', String(isDark));
+        label.textContent = isDark ? 'LIGHT' : 'DARK';
+        moonIcon.classList.toggle('hidden', isDark);
+        sunIcon.classList.toggle('hidden', !isDark);
+      }
+
+      try {
+        localStorage.setItem('ikhram-theme', isDark ? 'dark' : 'light');
+      } catch (error) {
+        // Theme still works for the current page when storage is unavailable.
+      }
+    }
+
+    function toggleTheme() {
+      const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      setTheme(nextTheme, true);
+    }
+
+    setTheme(document.documentElement.dataset.theme || 'light');
+
+    // Live Clock
+    function updateClock() {
+      const d = new Date();
+      const s = d.toLocaleTimeString('en-US', { timeZone: 'Asia/Jakarta', hour12: false });
+      const el = document.getElementById('liveClock');
+      if (el) el.innerText = s + ' WIB';
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Copy Coordinates
+    function copyCoord() {
+      navigator.clipboard?.writeText("06�59'S 110�25'E");
+      const a = document.getElementById('coordAlert');
+      a.classList.remove('hidden');
+      setTimeout(() => a.classList.add('hidden'), 2000);
+    }
+
+    // Mutate Signature Object Easter Egg
+    let sigClicks = 0;
+    const sigModes = [
+      { name: 'Orbital Gyroscope', stroke: '#2563EB', fill: '#FF5722' },
+      { name: 'Isometric Polyhedron', stroke: '#10B981', fill: '#FFD600' },
+      { name: 'Constellation Flux', stroke: '#FF6B6B', fill: '#2563EB' },
+      { name: 'Harmonic Pulse', stroke: '#0A0F1D', fill: '#10B981' }
+    ];
+    let curSigMode = 0;
+
+    function mutateSig() {
+      sigClicks++;
+      curSigMode = (curSigMode + 1) % sigModes.length;
+      document.getElementById('sigClicks').innerText = `(${sigClicks} clicks)`;
+      document.getElementById('sigLabel').innerText = `SIGNATURE_CORE: ${sigModes[curSigMode].name}`;
+      document.getElementById('sigCore').setAttribute('fill', sigModes[curSigMode].fill);
+
+      if (sigClicks === 3) {
+        const t = document.getElementById('toastBadge');
+        t.classList.remove('hidden');
+        setTimeout(() => t.classList.add('hidden'), 3000);
+      }
+    }
+
+    // 3D Tilt on Signature
+    window.addEventListener('mousemove', (e) => {
+      const wrapper = document.getElementById('sigWrapper');
+      if (!wrapper) return;
+      const rect = wrapper.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const dx = (e.clientX - cx) / (window.innerWidth / 2);
+      const dy = (e.clientY - cy) / (window.innerHeight / 2);
+      wrapper.style.transform = `perspective(800px) rotateX(${-dy * 15}deg) rotateY(${dx * 15}deg)`;
+    });
+
+    // Philosophy switcher
+    const philosophies = [
+      { step: "01", title: "CURIOSITY", action: "Deconstruct the unseen", desc: "Digging beneath surface specs. Asking why an interaction feels clunky, or how a sensor payload can translate into human motion." },
+      { step: "02", title: "EXPERIMENT", action: "Rapid low-stakes prototypes", desc: "Breadboards, rough code sandboxes, and vector sketches. Failing quickly in code before crystallizing the aesthetic." },
+      { step: "03", title: "BUILD", action: "Deterministic architecture", desc: "Translating experimental sparks into resilient TypeScript, clean component trees, and dependable network states." },
+      { step: "04", title: "REFINE", action: "Micro-interactions & cadence", desc: "Tuning easing curves, zeroing out awkward layout shifts, and injecting tactile auditory and visual feedback." },
+      { step: "05", title: "SHARE", action: "Deploy to open channels", desc: "Shipping live artifacts into the world, gathering real-world telemetry, and documenting discoveries for the community." }
+    ];
+
+    function setPhilosophy(idx) {
+      const p = philosophies[idx];
+      document.getElementById('philStepName').innerText = `STAGE ${p.step} // ${p.title}`;
+      document.getElementById('philAction').innerText = `"${p.action}"`;
+      document.getElementById('philDesc').innerText = p.desc;
+
+      document.querySelectorAll('.phil-btn').forEach((btn, i) => {
+        if (i === idx) {
+          btn.className = "phil-btn py-2 px-1 text-center border border-navy bg-navy text-white font-bold";
+        } else {
+          btn.className = "phil-btn py-2 px-1 text-center border border-gray-300 bg-gray-50 text-navy";
+        }
+      });
+    }
+
+    // Skill Constellation Data & Rendering
+    const skills = [
+      { id: "ts", name: "TypeScript", category: "BUILD", level: "Core Engine", desc: "Strict typing, modular interfaces, and predictable data modeling for bulletproof web apps.", accent: "#2563EB", x: 19, y: 13, connections: ["css", "node"], meta: "Strict Mode // Generics // TSX" },
+      { id: "css", name: "CSS", category: "BUILD", level: "Styling Fundamentals", desc: "Styling web interfaces with selectors, the box model, responsive layouts, and maintainable visual rules.", accent: "#2563EB", x: 63, y: 44, connections: ["ts", "design_sys", "uiux"], meta: "Selectors // Box Model // Responsive Layouts" },
+      { id: "iot", name: "IoT & ESP32", category: "BUILD", level: "Physical Computing", desc: "Interfacing microcontrollers with ultrasonic/IR sensors, servos, and MQTT protocols.", accent: "#FF5722", x: 81, y: 16, connections: ["node", "systems"], meta: "C++ // GPIO // Telemetry" },
+      { id: "node", name: "Networking", category: "BUILD", level: "Infrastructure", desc: "IP addressing, routing fundamentals, firewall configuration, and traffic analysis for secure, reliable networks.", accent: "#10B981", x: 16, y: 30, connections: ["ts", "iot", "systems"], meta: "TCP/IP // MikroTik // Linux Firewall" },
+      { id: "uiux", name: "UI/UX Architecture", category: "DESIGN", level: "Product Craft", desc: "User flow choreography, cognitive load reduction, and asymmetric visual rhythm.", accent: "#FF6B6B", x: 52, y: 58, connections: ["figma", "motion", "design_sys", "canva", "broadcast"], meta: "Wireframing // Heuristic Audit" },
+      { id: "figma", name: "Figma", category: "DESIGN", level: "Tool Mastery", desc: "Component variants, auto-layout wizardry, interactive micro-prototypes, and design tokens.", accent: "#A855F7", x: 86, y: 34, connections: ["uiux", "design_sys", "canva", "broadcast"], meta: "Variables // Auto-Layout 5" },
+      { id: "design_sys", name: "Design Systems", category: "DESIGN", level: "Systematization", desc: "Scalable typography scales, atomic component kits, and accessible color contrasts.", accent: "#F59E0B", x: 22, y: 76, connections: ["figma", "canva"], meta: "WCAG AAA // Tokens" },
+      { id: "canva", name: "Canva", category: "DESIGN", level: "Visual Composition", desc: "I enjoy bringing ideas to life through color, typography, and balanced layouts, creating visuals that feel clear, expressive, and thoughtfully put together.", accent: "#00C4CC", x: 64, y: 74, connections: ["figma", "uiux", "design_sys", "broadcast", "photo", "photo_edit", "composition"], meta: "Layouts // Typography // Color Palettes" },
+      { id: "broadcast", name: "OBS", category: "CINEMATOGRAPHY", level: "Visual Production", desc: "I use OBS Studio to build scenes, manage video and audio sources, set transitions, and prepare live streams or recordings.", accent: "#FFD600", x: 87, y: 75, connections: ["uiux", "canva", "figma", "photo", "photo_edit", "composition"], meta: "Scenes // Sources // Audio Mixer // Streaming & Recording" },
+      { id: "photo", name: "Photo", category: "CINEMATOGRAPHY", level: "Capture & Lighting", desc: "Captures clear, expressive images through thoughtful framing, lighting, focus, and exposure.", accent: "#0F766E", x: 16, y: 61, connections: ["broadcast", "canva", "composition"], meta: "Framing // Lighting // Exposure" },
+      { id: "photo_edit", name: "Photo Edit", category: "CINEMATOGRAPHY", level: "Image Retouching", desc: "Improves images with careful color correction, exposure balancing, retouching, and cropping.", accent: "#14B8A6", x: 51, y: 28, connections: ["broadcast", "canva", "figma"], meta: "Color // Exposure // Retouching" },
+      { id: "composition", name: "Composition Rule", category: "CINEMATOGRAPHY", level: "Visual Composition", desc: "Uses the rule of thirds, leading lines, balance, and negative space to guide the viewer's attention.", accent: "#0D9488", x: 87, y: 62, connections: ["broadcast", "uiux", "design_sys", "photo"], meta: "Rule of Thirds // Leading Lines // Balance" },
+      { id: "motion", name: "Motion & Micro-UX", category: "DESIGN", level: "Kinetic Polish", desc: "Physics-based spring curves, layout transitions, and tactile hover feedback.", accent: "#EC4899", x: 30, y: 45, connections: ["uiux"], meta: "Spring Curves // Transitions" },
+      { id: "systems", name: "Systems Thinking", category: "THINK", level: "Mental Model", desc: "Holistic problem mapping: how software, physical hardware, and human operators intertwine.", accent: "#3B82F6", x: 50, y: 90, connections: ["iot", "node", "problem_solving"], meta: "Topology // Feedback Loops" },
+      { id: "problem_solving", name: "Consultant", category: "THINK", level: "Advisory Practice", desc: "I enjoy understanding client needs, asking focused questions, and turning complex challenges into clear, practical recommendations.", accent: "#10B981", x: 84, y: 90, connections: ["systems", "research"], meta: "Discovery // Analysis // Recommendations" },
+      { id: "research", name: "Exploratory Research", category: "THINK", level: "Discovery", desc: "Competitive landscape analysis, user interview synthesis, and rapid documentation.", accent: "#F97316", x: 87, y: 48, connections: ["problem_solving"], meta: "Interviews // Feasibility" }
+    ];
+    const skillCategoryAccents = { ALL: '#0A0F1D', BUILD: '#2563EB', DESIGN: '#A855F7', THINK: '#10B981', CINEMATOGRAPHY: '#0F766E' };
+
+    let currentSkillFilter = 'ALL';
+    let hoveredSkillId = null;
+    let activeSkillId = null;
+
+    function renderConstellation() {
+      const container = document.getElementById('nodesLayer');
+      const svg = document.getElementById('constellationSvg');
+      container.innerHTML = '';
+      svg.innerHTML = '';
+
+      const filtered = currentSkillFilter === 'ALL' ? skills : skills.filter(s => s.category === currentSkillFilter);
+
+
+      // Render Nodes
+      filtered.forEach(s => {
+        const isHovered = hoveredSkillId === s.id;
+        const isActive = activeSkillId === s.id;
+        const node = document.createElement('div');
+        node.style.left = `${s.x}%`;
+        node.style.top = `${s.y}%`;
+        node.className = `absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer transition-all duration-200 ${isHovered || isActive ? 'scale-125 z-50' : 'hover:scale-110 z-20'}`;
+        node.innerHTML = `
+          <div style="border-color: ${skillCategoryAccents[s.category]}; font-size: ${s.category === 'CINEMATOGRAPHY' ? '14px' : '13px'}; padding: ${s.category === 'CINEMATOGRAPHY' ? '8px 16px' : '7px 12px'}" class="font-mono-code flex items-center gap-2 border-2 transition-all shadow-xs font-medium ${isHovered || isActive ? 'bg-navy text-white border-navy shadow-md' : 'bg-white text-navy border-gray-300'}">
+            <span class="w-2 h-2 rounded-full shrink-0" style="background-color: ${s.accent}"></span>
+            <span class="whitespace-nowrap font-medium">${s.name}</span>
+          </div>
+        `;
+        node.onmouseenter = () => {
+          hoveredSkillId = s.id;
+          updateSkillInspector(s);
+          renderConstellation();
+        };
+        node.onmouseleave = () => {
+          hoveredSkillId = null;
+          renderConstellation();
+        };
+        node.onclick = () => {
+          activeSkillId = s.id;
+          updateSkillInspector(s);
+          renderConstellation();
+        };
+        container.appendChild(node);
+      });
+    }
+
+    function updateSkillInspector(s) {
+      document.getElementById('inspectorCategory').innerText = s.category;
+      document.getElementById('inspectorCategory').style.backgroundColor = skillCategoryAccents[s.category];
+      document.getElementById('inspectorLevel').innerText = s.level;
+      document.getElementById('inspectorTitle').innerText = s.name;
+      document.getElementById('inspectorTitle').style.color = s.accent;
+      document.getElementById('inspectorMeta').innerText = `METADATA // ${s.meta}`;
+      const inspectorDesc = document.getElementById('inspectorDesc');
+      inspectorDesc.innerText = s.desc;
+      document.getElementById('skillBadgeDot').style.backgroundColor = s.accent;
+      document.getElementById('skillBadgeName').innerText = `NODE_PROJECTION: ${s.name}`;
+    }
+
+    function filterSkills(category) {
+      currentSkillFilter = category;
+
+      document.querySelectorAll('.skill-cat-btn').forEach((button) => {
+        const isActive = button.dataset.cat === category;
+        const accent = skillCategoryAccents[button.dataset.cat];
+        button.style.backgroundColor = isActive ? accent : 'transparent';
+        button.style.borderColor = accent;
+        button.style.color = isActive ? '#FFFFFF' : accent;
+        button.classList.toggle('font-bold', isActive);
+      });
+
+      renderConstellation();
+    }
+
+    // Projects Data
+    const projects = [
+      {
+        id: "de-vanillis-brand",
+        modalView: "narrative",
+        num: "02",
+        title: "De Vanilli's Export Identity",
+        subtitle: "Sensory Packaging & Digital Export Concept",
+        year: "2024-2026",
+        category: "CERTIFICATES",
+        colSpan: "md:col-span-12",
+        shortDesc: "Comprehensive brand identity, 3D packaging geometry, and editorial digital storefront for premium Indonesian dried vanilla bean exporters.",
+        role: "Visual Identity & Packaging Designer",
+        technologies: ["Figma", "OpenSCAD", "Editorial Typography", "Motion Design"],
+        challenge: "Traditional agricultural exporters rely on bland commodity packaging that fails to command premium positioning in discerning international luxury markets.",
+        solution: "Formulated an organic-brutalist packaging silhouette utilizing tactile kraft textures, gold-stamped moisture-barrier tubes, and a digital provenance portal.",
+        outcome: "Completed end-to-end brand guidelines, complete 3D container blueprints ready for injection molding, and interactive export pitch presentation.",
+        gradient: "from-[#FEF9E7] to-[#FDEEC5]",
+        accent: "#F59E0B"
+      },
+      {
+        id: "STREAMING",
+        modalView: "live-stream",
+        num: "01",
+        title: "Live Streaming Production",
+        subtitle: "Multi-Camera Broadcast & Live Event Operations",
+        year: "2025-2026",
+        category: "LIVE STREAMING",
+        colSpan: "md:col-span-7",
+        shortDesc: "Multi-camera live-streaming operations for institutional and client events, coordinating AV infrastructure, crew staging, and real-time video feeds.",
+        role: "Vice President // StembaCinematoGraphy",
+        technologies: ["Multi-Camera Signal Flow", "Wireless Monitoring", "Audio DSP", "Live Video Feeds", "Crew Operations"],
+        challenge: "Coordinating camera crews, wireless monitoring, and audio across large live events required precise staging and technical logistics.",
+        solution: "Directed AV infrastructure and broadcast staging across multi-camera signal flows, wireless monitoring rigs, audio DSP, and live feeds.",
+        outcome: "Worked on live streams for five school events reaching 100+ attendees, plus three client broadcasts.All problems can be solved by discussing with other crew members so that the problem can be solved properly.",
+        gradient: "from-[#EBF3FF] to-[#D6E6FF]",
+        accent: "#2563EB"
+      },
+      {
+        id: "graphic-design-field-guide",
+        num: "02",
+        title: "Graphic Design Field Guide",
+        subtitle: "Typography, Color Theory & Visual Identity",
+        year: "2025-2026",
+        category: "WEB",
+        displayCategory: "DESIGN PROJECT",
+        colSpan: "md:col-span-5",
+        shortDesc: "A planned editorial guide to graphic design fundamentals, exploring how typography, color, layout, and visual identity shape clear communication.",
+        role: "Visual Designer & Design Researcher",
+        technologies: ["Figma", "Typography", "Color Theory", "Visual Identity", "Layout Design"],
+        challenge: "Design principles can feel abstract when hierarchy, color, and composition are taught as disconnected rules instead of a visual language.",
+        solution: "The site will explain each principle through curated examples, annotated layouts, and simple exercises readers can apply to their own work.",
+        outcome: "The planned outcome is a practical reference that will help readers turn core principles into clear, consistent, and intentional compositions.",
+        gradient: "from-[#FFF1B8] to-[#F5B6D2]",
+        accent: "#D9468F"
+      },
+      {
+        id: "automotive-tech-manifesto",
+        num: "03",
+        title: "Website Archives Project",
+        subtitle: "Interactive Editorial Propulsion Visualizer",
+        year: "2025-2026",
+        category: "WEB",
+        displayCategory: "WEBSITE PROJECT",
+        colSpan: "md:col-span-7",
+        shortDesc: "An exploratory digital editorial breaking down internal combustion, hybrid powertrains, and electric drivetrains through kinetic interactive physics.",
+        role: "Creative Developer & UI Designer",
+        technologies: [],
+        challenge: "Automotive technical diagrams are often dry, static PDF diagrams or overloaded corporate landing pages that hide mechanical wonder.",
+        solution: "Designed an interactive kinetic magazine with tactile engine stroke simulations, power-curve scrubbers, and responsive typography that morphs with scroll depth.",
+        outcome: "Featured as a benchmark student project for interactive technical education with over 800+ exploratory sessions and zero layout breakdown on mobile.",
+        gradient: "from-[#FFF1EB] to-[#FFE0D3]",
+        accent: "#FF5722"
+      },
+      {
+        id: "smartpark-iot",
+        num: "04",
+        title: "IoT Archives Project",
+        subtitle: "Connected Sensors, Telemetry & Automation",
+        year: "2025-2026",
+        category: "IOT / HARDWARE",
+        colSpan: "md:col-span-5",
+        shortDesc: "An IoT-focused collection exploring how sensors, microcontrollers, connectivity, and automation work together in practical systems.",
+        role: "IoT Systems & Prototyping",
+        technologies: ["ESP32", "Sensors", "Telemetry", "Microcontrollers", "Automation"],
+        challenge: "IoT is harder to understand when sensors, communication, data processing, and automation are presented as isolated parts.",
+        solution: "The archive will connect these stages through project references that show how sensing, connectivity, processing, and actuation work together.",
+        outcome: "A focused resource for understanding complete IoT workflows, from sensor input and data transfer to monitoring and automated response.",
+        gradient: "from-[#D9F7EE] to-[#B9E9DD]",
+        accent: "#0F9F84"
+      }
+    ];
+
+    let currentProjectFilter = 'ALL';
+
+    function renderProjectThumbnail(project, showActionLabels = true) {
+      const isWeb02 = project.id === 'automotive-tech-manifesto';
+      const thumbnailTitle = project.id === 'automotive-tech-manifesto' ? 'Website Archives Project' : project.id === 'graphic-design-field-guide' ? 'Design Archives Project' : project.title;
+      const isStreaming = project.id === 'STREAMING';
+      const isCreativeDirection = project.id === 'de-vanillis-brand';
+      const thumbnailSubtitle = isStreaming ? "Multi-Camera Broadcast & Live Event Operations" : isCreativeDirection ? "Sensory Packaging & Digital Export Concept" : project.subtitle;
+      const thumbnailRole = isStreaming ? "Vice President // StembaCinematoGraphy" : isCreativeDirection ? "Visual Identity & Packaging Designer" : project.role;
+      const thumbnailGradient = isStreaming ? 'from-[#EBF3FF] to-[#D6E6FF]' : isCreativeDirection ? 'from-[#FEF9E7] to-[#FDEEC5]' : project.gradient;
+
+      return `
+        <div class="project-cover ${showActionLabels ? 'my-6 h-48 sm:h-64 p-5' : 'project-cover--modal h-48 sm:h-56'} border border-navy flex flex-col justify-between bg-gradient-to-br ${thumbnailGradient}">
+          <div class="my-auto text-center">
+            <span class="text-3xl sm:text-4xl font-display font-black text-navy group-hover:scale-105 transition-transform inline-block">${thumbnailTitle}</span>
+            <div class="text-xs font-mono-code text-gray-600 mt-1">${thumbnailSubtitle}</div>
+          </div>
+          ${showActionLabels ? `
+            ${isWeb02 ? `
+              <div class="web02-preview-row">
+                <div class="web02-topic-strip" aria-label="Web 02 attachments">
+                  ${web02Attachments.map(attachment => `<span class="web02-topic-chip">${attachment.title}</span>`).join('')}
+                </div>
+                <span class="web02-preview-action">VIEW PROJECT &rarr;</span>
+              </div>
+            ` : `
+              <div class="flex items-center justify-between font-mono-code text-xs">
+                <span class="text-gray-500">ROLE: ${thumbnailRole}</span>
+                <span class="px-3 py-1 bg-navy text-white font-bold group-hover:bg-electric transition-colors flex items-center gap-1">
+                  VIEW PROJECT &rarr;
+                </span>
+              </div>
+            `}
+          ` : ''}
+        </div>
+      `;
+    }
+
+    function renderProjects() {
+      const grid = document.getElementById('projectGrid');
+      grid.innerHTML = '';
+      const filtered = currentProjectFilter === 'ALL' ? projects : projects.filter(p => p.category === currentProjectFilter);
+
+      filtered.forEach(p => {
+        const card = document.createElement('div');
+        card.className = `${p.colSpan} cursor-pointer group`;
+        card.onclick = () => openModal(p);
+        card.innerHTML = `
+          <article class="bg-white border-2 border-navy p-6 sm:p-8 shadow-[4px_4px_0px_#0A0F1D] group-hover:shadow-[8px_8px_0px_#2563EB] group-hover:-translate-y-1 transition-all duration-300">
+            <div class="flex items-center justify-between pb-4 border-b border-gray-200 font-mono-code text-xs text-gray-500">
+              <div class="flex items-center gap-2">
+                <span class="text-navy font-bold">${p.id === 'de-vanillis-brand' ? '>' : '[' + p.num + ']'}</span>
+                <span class="text-vividOrange font-semibold">${p.displayCategory || p.category}</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span>YEAR: ${p.year}</span>
+                <span class="w-2.5 h-2.5 rounded-full inline-block" style="background-color: ${p.accent}"></span>
+              </div>
+            </div>
+
+            ${renderProjectThumbnail(p)}
+
+            <div class="space-y-4">
+              <p class="project-summary text-sm sm:text-base text-gray-600 leading-relaxed">${p.shortDesc}</p>
+              <div class="flex flex-wrap gap-1.5 pt-2">
+                ${p.technologies.map(t => `<span class="px-2.5 py-0.5 bg-[#F7F7F2] border border-gray-300 font-mono-code text-xs text-navy">#${t}</span>`).join('')}
+              </div>
+              <div class="pt-3 border-t border-dashed border-gray-200 font-mono-code text-xs text-freshLime font-semibold flex items-center gap-1.5">
+                <span>&rarr; IMPACT:</span>
+                <span class="text-navy font-normal">${p.outcome}</span>
+              </div>
+            </div>
+          </article>
+        `;
+        if (p.id === 'de-vanillis-brand') {
+          card.classList.remove('cursor-pointer', 'group');
+          card.onclick = null;
+          const article = card.querySelector('article');
+          if (article) {
+            Array.from(article.children).slice(1).forEach(section => section.remove());
+            article.classList.remove('group-hover:shadow-[8px_8px_0px_#2563EB]', 'group-hover:-translate-y-1');
+
+            const certificateFiles = [
+              { title: 'Cisco IT Essentials', src: 'assets/certificates/it-essentials.jpg', type: 'image' },
+              { title: 'Paskibra Pasukan 45', src: 'assets/certificates/paskibra.jpg', type: 'image' },
+              { title: 'Hour of Code', src: 'assets/certificates/hour-of-code.jpg', type: 'image' },
+              { title: 'Hour of AI', src: 'assets/certificates/hour-of-ai.jpg', type: 'image' },
+              { title: 'Music Lab: Jam Session', src: 'assets/certificates/music-lab.jpg', type: 'image' },
+              { title: 'Java Fundamentals', src: 'assets/certificates/java-fundamentals.pdf', type: 'pdf' },
+              { title: 'XII SIJA 03', src: 'assets/certificates/xii-sija-03.pdf', type: 'pdf' },
+              { title: 'RevoU Software Engineering', src: 'assets/certificates/stc-revou.pdf', type: 'pdf' }
+            ];
+            const slider = document.createElement('section');
+            slider.className = 'cert-slider';
+            slider.setAttribute('aria-label', 'Certificate gallery');
+            slider.innerHTML =
+              '<div class="cert-slider__topline"><span>CERTIFICATE ARCHIVE</span><span>' + certificateFiles.length + ' ITEMS</span></div>' +
+              '<div class="cert-slider__viewport">' +
+                certificateFiles.map((item, index) => {
+                  const media = item.type === 'pdf'
+                    ? '<iframe src="' + item.src + '#view=FitH" title="' + item.title + ' certificate"></iframe>'
+                    : '<img src="' + item.src + '" alt="' + item.title + ' certificate">';
+                  return '<div class="cert-slider__slide' + (index === 0 ? ' is-active' : '') + '" aria-hidden="' + (index === 0 ? 'false' : 'true') + '">' + media + '</div>';
+                }).join('') +
+              '</div>' +
+              '<div class="cert-slider__controls">' +
+                '<button type="button" class="cert-slider__button" data-certificate-prev aria-label="Previous certificate">&larr; PREV</button>' +
+                '<span class="cert-slider__counter" aria-live="polite"></span>' +
+                '<button type="button" class="cert-slider__button" data-certificate-next aria-label="Next certificate">NEXT &rarr;</button>' +
+              '</div>';
+            article.appendChild(slider);
+
+            const slides = Array.from(slider.querySelectorAll('.cert-slider__slide'));
+            const counter = slider.querySelector('.cert-slider__counter');
+            let activeCertificate = 0;
+            const showCertificate = (index) => {
+              activeCertificate = (index + slides.length) % slides.length;
+              slides.forEach((slide, slideIndex) => {
+                const isActive = slideIndex === activeCertificate;
+                slide.classList.toggle('is-active', isActive);
+                slide.setAttribute('aria-hidden', String(!isActive));
+              });
+              counter.textContent = certificateFiles[activeCertificate].title + ' // ' + (activeCertificate + 1) + ' OF ' + slides.length;
+            };
+            slider.querySelector('[data-certificate-prev]').addEventListener('click', () => showCertificate(activeCertificate - 1));
+            slider.querySelector('[data-certificate-next]').addEventListener('click', () => showCertificate(activeCertificate + 1));
+            showCertificate(0);
+          }
+        }        grid.appendChild(card);
+      });
+    }
+
+    function filterProjects(cat) {
+      currentProjectFilter = cat;
+      document.querySelectorAll('.proj-cat-btn').forEach(btn => {
+        if (btn.getAttribute('data-cat') === cat) {
+          btn.className = "proj-cat-btn px-3 py-1 font-mono-code text-xs bg-navy text-white font-bold";
+        } else {
+          btn.className = "proj-cat-btn px-3 py-1 font-mono-code text-xs text-gray-600 hover:text-navy";
+        }
+      });
+      renderProjects();
+    }
+
+    const liveStreamVideos = [
+      { category: 'STEMBA', date: '16 Juni 2025', videoId: '6A4FSslOwik' },
+      { category: 'JOB', date: '6 September 2025', videoId: 'r8QJovORbMI' },
+      { category: 'ROHIS', date: '19 Sep 2025', videoId: '3HU84G9OBHk' },
+      { category: 'STEMBA', date: '16 Okt 2025', videoId: 'EtnmH50hDXM' },
+      { category: 'JOB', date: '18 Januari 2026', videoId: '8T-3p3M_E_M' },
+      { category: 'ROHIS', date: '10 Juni 2026', videoId: 'qJlZs4ZZS_c' }
+    ];
+
+    function renderLiveStreamGallery() {
+      return `
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          ${liveStreamVideos.map(video => `
+            <a
+              href="https://www.youtube.com/watch?v=${video.videoId}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Putar video ${video.category}, ${video.date} di YouTube"
+              class="group block min-w-0 overflow-hidden border border-gray-200 bg-white"
+            >
+              <div class="flex items-center justify-between gap-3 px-3 py-2 bg-gray-50">
+                <span class="font-mono-code text-[10px] font-bold text-navy uppercase">${video.category}</span>
+                <span class="font-mono-code text-[10px] text-gray-500">${video.date}</span>
+              </div>
+              <div class="relative aspect-video overflow-hidden bg-gray-200">
+                <img
+                  src="https://img.youtube.com/vi/${video.videoId}/hqdefault.jpg"
+                  alt="Thumbnail ${video.category} - ${video.date}"
+                  loading="lazy"
+                  class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                >
+                <span class="absolute inset-0 flex items-center justify-center bg-black/15 transition-colors group-hover:bg-black/30" aria-hidden="true">
+                  <span class="grid h-12 w-16 place-items-center bg-red-600 text-white shadow-lg">
+                    <svg class="ml-1 h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </span>
+                </span>
+              </div>
+              <div class="flex items-center justify-end px-3 py-2">
+                <span class="font-mono-code text-[10px] font-bold text-navy underline">PUTAR DI YOUTUBE</span>
+              </div>
+            </a>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    const web02Attachments = [
+      {
+        category: 'MATHEMATICS',
+        title: 'InversMat',
+        url: 'https://inversmat-crtd-by-ikhram.netlify.app/',
+        gradient: 'from-[#E6F0FF] to-[#C7DAF5]'
+      },
+      {
+        category: 'PERSONAL BRANDING',
+        title: 'Personal Branding 1',
+        url: 'https://widhyadanaikhram-code.github.io/ikhrambilalw-prsnlbrdng/',
+        gradient: 'from-[#E6F4EA] to-[#C7E3D1]'
+      },
+      {
+        category: 'AUTOMOTIVE TECH',
+        title: 'Automotive Tech',
+        url: 'https://automotivetechnew.page.gd/',
+        gradient: 'from-[#E6EFFF] to-[#C5D9F5]'
+      },
+      {
+        category: 'SEJARAH',
+        title: 'Reformasi Era Megawati',
+        url: 'https://sites.google.com/view/reformasieramegawati/profile',
+        gradient: 'from-[#FFF1E7] to-[#F2D4BE]'
+      },
+      {
+        category: 'SEJARAH',
+        title: 'Dinamika pada Zaman Reformasi',
+        url: 'https://dinamikapadazamanreformasi1.page.gd/',
+        gradient: 'from-[#F3EDFF] to-[#D8CCEF]'
+      },
+      {
+        category: 'SAPTA BUDAYA',
+        title: 'Sapta Budaya Simpang 5',
+        url: 'https://sway.cloud.microsoft/wEvWyJvGDy7iusRq?ref=Link&classId=22a15a9b-e6f7-4739-b206-fe03c3be068c&assignmentId=653920fe-d83c-453f-ba7b-0b0f66663871&submissionId=0f4f0fc6-1315-b7b6-ce5d-9253bea806e0',
+        gradient: 'from-[#FFF6D9] to-[#F0DCA0]'
+      },
+      {
+        category: 'KIK',
+        title: 'Evaluasi & Target Pembelajaran KIK',
+        url: 'https://sites.google.com/view/22kik/home',
+        gradient: 'from-[#E5F4F0] to-[#C4E3D9]'
+      },
+      {
+        category: 'ONLINE STORE',
+        title: 'MarSeiloo.Store',
+        url: 'https://s.id/seilooo',
+        action: 'KUNJUNGI TOKO &rarr;',
+        visual: 'storefront',
+        gradient: 'from-[#F8E9F2] to-[#E6C7D9]'
+      }
+    ];
+
+    function renderWeb02Gallery() {
+      return `
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          ${web02Attachments.map((attachment, index) => `
+            <a
+              href="${attachment.url}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Buka ${attachment.title}"
+              class="group block min-w-0 overflow-hidden border border-gray-200 bg-white"
+            >
+              <div class="web-attachment-cover ${attachment.visual === 'storefront' ? 'web-attachment-cover--store' : ''} relative flex aspect-video flex-col justify-between overflow-hidden bg-gradient-to-br p-4 ${attachment.gradient}">
+                <div class="flex flex-col items-start gap-1 font-mono-code text-[9px] font-bold text-navy">
+                  <span class="web-attachment-category border border-navy/40 bg-white/70 px-1.5 py-0.5">${attachment.category}</span>
+                </div>
+                <div class="relative z-10 my-auto max-w-[85%]">
+                  <h3 class="web-attachment-title font-display font-extrabold text-navy">${attachment.title}</h3>
+                </div>
+                ${attachment.visual === 'storefront' ? `
+                  <div class="web-storefront-art" aria-hidden="true">
+                    <div class="web-storefront-awning"></div>
+                    <div class="web-storefront-window"><span></span><span></span><span></span><span></span></div>
+                    <div class="web-storefront-base">MARSEILOO</div>
+                  </div>
+                ` : `
+                  <span class="absolute -bottom-8 -right-4 font-display text-[100px] font-extrabold leading-none text-white/40" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span>
+                `}
+              </div>
+              ${attachment.action ? `
+                <div class="flex items-center justify-end px-3 py-2">
+                  <span class="font-mono-code text-[10px] font-bold text-navy underline">${attachment.action}</span>
+                </div>
+              ` : `
+                <div class="flex items-center justify-between gap-3 px-3 py-2">
+                  <span class="font-mono-code text-[10px] font-bold text-gray-600">${attachment.category}</span>
+                  <span class="font-mono-code text-[10px] font-bold text-navy underline">BUKA SITUS &rarr;</span>
+                </div>
+              `}
+            </a>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    function renderGraphicDesignGallery() {
+      const folderUrl = 'https://drive.google.com/drive/folders/12vX_4FWaoBRrCKP_mXTuiOTJztgpMns5?usp=sharing';
+
+      return '<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">' +
+        '<a href="' + folderUrl + '" target="_blank" rel="noopener noreferrer" aria-label="Buka folder referensi desain grafis di Google Drive" class="group block min-w-0 overflow-hidden border border-gray-200 bg-white">' +
+          '<div class="relative flex aspect-video flex-col justify-between overflow-hidden bg-gradient-to-br from-[#FFF1B8] to-[#F5B6D2] p-4">' +
+            '<span class="web-attachment-category w-fit border border-navy/40 bg-white/70 px-1.5 py-0.5 font-mono-code text-[9px] font-bold text-navy">GRAPHIC DESIGN</span>' +
+            '<div class="relative z-10 my-auto">' +
+              '<span class="block font-display text-5xl font-black leading-none text-[#D9468F]" aria-hidden="true">Aa</span>' +
+              '<h3 class="mt-1 font-display text-xl font-extrabold leading-tight text-navy">Graphic Design<br>Reference Folder</h3>' +
+            '</div>' +
+            '<span class="absolute -bottom-8 -right-4 font-display text-[100px] font-extrabold leading-none text-white/40" aria-hidden="true">03</span>' +
+          '</div>' +
+          '<div class="flex items-center justify-between gap-3 px-3 py-2">' +
+            '<span class="font-mono-code text-[10px] font-bold text-gray-600">GOOGLE DRIVE</span>' +
+            '<span class="font-mono-code text-[10px] font-bold text-navy underline">OPEN FOLDER &rarr;</span>' +
+          '</div>' +
+        '</a>' +
+      '</div>';
+    }
+    function renderIotGallery() {
+      const folderUrl = 'https://drive.google.com/drive/folders/1EUIdOLVehgh58Zmj9nvHkgWgV2-93poZ?usp=sharing';
+
+      return '<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">' +
+        '<a href="' + folderUrl + '" target="_blank" rel="noopener noreferrer" aria-label="Buka folder referensi Internet of Things di Google Drive" class="group block min-w-0 overflow-hidden border border-gray-200 bg-white">' +
+          '<div class="relative flex aspect-video flex-col justify-between overflow-hidden bg-gradient-to-br from-[#D9F7EE] to-[#B9E9DD] p-4">' +
+            '<span class="web-attachment-category w-fit border border-navy/40 bg-white/70 px-1.5 py-0.5 font-mono-code text-[9px] font-bold text-navy">INTERNET OF THINGS</span>' +
+            '<div class="relative z-10 my-auto">' +
+              '<span class="block font-display text-5xl font-black leading-none text-[#0F9F84]" aria-hidden="true">IoT</span>' +
+              '<h3 class="mt-1 font-display text-xl font-extrabold leading-tight text-navy">IoT Project<br>Reference Folder</h3>' +
+            '</div>' +
+            '<span class="absolute -bottom-8 -right-4 font-display text-[100px] font-extrabold leading-none text-white/40" aria-hidden="true">05</span>' +
+          '</div>' +
+          '<div class="flex items-center justify-between gap-3 px-3 py-2">' +
+            '<span class="font-mono-code text-[10px] font-bold text-gray-600">GOOGLE DRIVE</span>' +
+            '<span class="font-mono-code text-[10px] font-bold text-navy underline">OPEN FOLDER &rarr;</span>' +
+          '</div>' +
+        '</a>' +
+      '</div>';
+    }
+    // Modal
+    function openModal(p) {
+      document.getElementById('modalRefTitle').innerText = p.id === 'graphic-design-field-guide' ? 'PROJECT_ARCHIVE // 02 // CREATIVE DESIGN' : p.id === 'automotive-tech-manifesto' ? 'PROJECT_ARCHIVE // 03 // WEBSITE' : `PROJECT_ARCHIVE // ${p.num} // ${p.id.toUpperCase()}`;
+      document.getElementById('modalCategory').innerText = p.displayCategory || p.category;
+      document.getElementById('modalYear').innerText = `YEAR: ${p.year}`;
+      document.getElementById('modalRole').innerText = `ROLE: ${p.role}`;
+      document.getElementById('modalTitle').innerText = p.title;
+      document.getElementById('modalSubtitle').innerText = p.subtitle;
+      document.getElementById('modalBanner').innerHTML = renderProjectThumbnail(p, false);
+
+      const showLiveStreamGallery = p.modalView === 'live-stream';
+      const showWeb02Gallery = p.id === 'automotive-tech-manifesto';
+      const showGraphicDesignGallery = p.id === 'graphic-design-field-guide';
+      const showIotGallery = p.id === 'smartpark-iot';
+      const showAttachmentGallery = showLiveStreamGallery || showWeb02Gallery || showGraphicDesignGallery || showIotGallery;
+      const narrative = document.getElementById('modalProjectNarrative');
+      const mediaGallery = document.getElementById('modalMediaGallery');
+      narrative.classList.toggle('hidden', showAttachmentGallery);
+      mediaGallery.classList.toggle('hidden', !showAttachmentGallery);
+      mediaGallery.innerHTML = showLiveStreamGallery
+        ? renderLiveStreamGallery()
+        : showWeb02Gallery ? renderWeb02Gallery()
+        : showGraphicDesignGallery ? renderGraphicDesignGallery()
+        : showIotGallery ? renderIotGallery() : '';
+
+      document.getElementById('modalChallenge').innerText = p.challenge;
+      document.getElementById('modalSolution').innerText = p.solution;
+      document.getElementById('modalOutcome').innerText = p.outcome;
+
+      const tags = document.getElementById('modalTechTags');
+      if (tags) {
+        tags.innerHTML = p.technologies.map(t => `<span class="px-3 py-1 bg-white border border-navy font-mono-code text-xs text-navy font-semibold">#${t}</span>`).join('');
+      }
+
+      document.getElementById('caseStudyModal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('caseStudyModal').classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    function resetContactForm() {
+      document.getElementById('contactForm').reset();
+      document.getElementById('contactForm').classList.remove('hidden');
+      document.getElementById('formSuccessState').classList.add('hidden');
+    }
+
+    // Footer Easter Egg
+    let footerClicks = 0;
+    function stampEgg() {
+      footerClicks++;
+      if (footerClicks >= 4) {
+        alert("? EASTER EGG UNLOCKED: \"Hardware beats hyperbole. Craftsmanship beats corporate templates.\" - IKHRAM.OS");
+        footerClicks = 0;
+      }
+    }
+
+    // Diagnostics HUD
+    function toggleHUD(open) {
+      const m = document.getElementById('hudModal');
+      if (open) {
+        m.classList.remove('hidden');
+        document.getElementById('hudViewport').innerText = `${window.innerWidth} � ${window.innerHeight}`;
+        document.getElementById('hudDpr').innerText = `${window.devicePixelRatio || 1}x`;
+      } else {
+        m.classList.add('hidden');
+      }
+    }
+
+    function toggleMobileNav(open) {
+      const d = document.getElementById('mobileDrawer');
+      if (open) d.classList.remove('hidden');
+      else d.classList.add('hidden');
+    }
+
+    // FPS loop
+    let lastT = performance.now();
+    let frames = 0;
+    function countFps(now) {
+      frames++;
+      if (now - lastT >= 1000) {
+        const fps = Math.round((frames * 1000) / (now - lastT));
+        const el = document.getElementById('hudFps');
+        if (el) el.innerText = fps + ' FPS';
+        frames = 0;
+        lastT = now;
+      }
+      requestAnimationFrame(countFps);
+    }
+    requestAnimationFrame(countFps);
+
+    // Keyboard [D] shortcut
+    window.addEventListener('keydown', (e) => {
+      if (['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return;
+      if (e.key === 'd' || e.key === 'D') {
+        const m = document.getElementById('hudModal');
+        toggleHUD(m.classList.contains('hidden'));
+      }
+      if (e.key === 'Escape') {
+        closeModal();
+        toggleHUD(false);
+      }
+    });
+
+    // Init Calls
+    renderConstellation();
+    renderProjects();
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

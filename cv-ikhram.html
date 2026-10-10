@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Curriculum Vitae - Ikhram Bilal Widhyadana</title>
+  <style>
+    :root { --ink: #202139; --side: #202137; --gold: #d7b33f; --muted: #66677d; }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 22px; background: #11111b; color: var(--ink); font: 15px/1.55 Arial, Helvetica, sans-serif; }
+    .toolbar { max-width: 1200px; margin: 0 auto 12px; display: flex; justify-content: space-between; align-items: center; gap: 12px; color: #d7d7e2; font: 700 11px/1.4 Consolas, monospace; letter-spacing: .1em; }
+    .toolbar button { border: 1px solid var(--gold); padding: 10px 14px; color: var(--gold); background: transparent; font: inherit; cursor: pointer; }
+    .toolbar button:hover { color: var(--side); background: var(--gold); }
+    .resume { width: min(1200px, 100%); min-height: 1120px; margin: auto; display: grid; grid-template-columns: 300px minmax(0, 1fr); background: #fff; box-shadow: 0 16px 55px #0008; }
+    .sidebar { padding: 38px 30px; color: #f5f5fa; background: var(--side); }
+    .portrait { display: block; width: 150px; height: 178px; margin: 0 auto 34px; object-fit: cover; object-position: center 32%; border: 2px solid #8a7130; border-radius: 12px; }
+    .side-section { margin: 0 0 30px; }
+    .side-section h2 { margin: 0 0 15px; padding-bottom: 9px; border-bottom: 1px solid #49495e; color: var(--gold); font: 700 13px/1.3 Arial, sans-serif; letter-spacing: .24em; text-transform: uppercase; }
+    .side-section p, .side-section li { margin: 0 0 8px; color: #c7c8d4; font-size: 13px; overflow-wrap: anywhere; }
+    .side-section ul { margin: 0; padding-left: 18px; }
+    .skill-list li { margin-bottom: 8px; color: #c7c8d4; font-size: 13px; }
+    .main { padding: 48px 54px 42px; }
+    .eyebrow { margin: 0 0 10px; color: #9d7b1e; font: 700 11px/1.4 Consolas, monospace; letter-spacing: .18em; }
+    h1 { margin: 0; font-size: clamp(36px, 4vw, 48px); line-height: 1.05; letter-spacing: -.04em; }
+    .role { margin: 10px 0 20px; color: #8e6f1c; font-size: 17px; font-weight: 700; }
+    .summary { margin: 0 0 28px; color: #626378; font-size: 15px; line-height: 1.7; text-align: justify; text-justify: inter-word; }
+    .main-section { margin: 0 0 26px; }
+    .main-section h2 { margin: 0 0 12px; padding-bottom: 8px; border-bottom: 2px solid var(--ink); color: var(--ink); font: 700 12px/1.4 Arial, sans-serif; letter-spacing: .28em; text-transform: uppercase; }
+    .data-row { display: grid; grid-template-columns: 190px 18px minmax(0, 1fr); gap: 8px; padding: 8px 11px; color: #626378; }
+    .data-row:nth-child(even) { background: #f6f5f3; }
+    .data-row strong { color: var(--ink); }
+    .timeline-entry { display: grid; grid-template-columns: 120px 18px minmax(0, 1fr); gap: 12px; padding: 2px 8px 17px; }
+    .year { color: var(--ink); font-weight: 700; text-align: right; }
+    .dot { position: relative; display: flex; justify-content: center; }
+    .dot::before { content: ''; z-index: 1; width: 9px; height: 9px; margin-top: 7px; border: 2px solid var(--ink); border-radius: 50%; background: var(--gold); }
+    .dot::after { content: ''; position: absolute; top: 16px; bottom: -17px; width: 1px; background: #d7d5d0; }
+    .timeline-entry:last-child .dot::after { display: none; }
+    .entry-content h3 { margin: 0 0 3px; color: var(--ink); font-size: 16px; line-height: 1.4; }
+    .entry-content p { margin: 0 0 5px; color: var(--muted); }
+    .entry-content ul { margin: 6px 0 0; padding-left: 18px; color: #74758a; font-size: 13px; }
+    .entry-content li { margin-bottom: 3px; }
+    .cert-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .cert-list span { padding: 6px 9px; border: 1px solid #dedee5; color: #57586d; font-size: 12px; }
+    @media (max-width: 760px) {
+      body { padding: 10px; }
+      .resume { grid-template-columns: 1fr; min-height: 0; }
+      .sidebar { display: block; padding: 24px; }
+      .portrait { width: 120px; height: 140px; margin-bottom: 6px; }
+      .side-section { margin-bottom: 10px; }
+      .main { padding: 28px 24px; }
+      .data-row { grid-template-columns: 125px 12px minmax(0, 1fr); gap: 5px; }
+      .timeline-entry { grid-template-columns: 76px 14px minmax(0, 1fr); gap: 8px; }
+      .entry-content h3 { font-size: 14px; }
+      .entry-content p { font-size: 13px; }
+    }
+    @page { size: A4; margin: 0; }
+    @media print {
+      html, body { width: 210mm; height: 297mm; }
+      body { padding: 0; background: #fff; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      .toolbar { display: none; }
+      .resume { width: 210mm; height: 297mm; min-height: 0; margin: 0; overflow: hidden; grid-template-columns: 68mm minmax(0, 1fr); box-shadow: none; }
+      .sidebar { padding: 7mm 6mm; }
+      .portrait { width: 30mm; height: 36mm; margin-bottom: 5mm; }
+      .side-section { margin-bottom: 4mm; break-inside: avoid; }
+      .side-section h2 { font-size: 8.5pt; margin-bottom: 1.5mm; padding-bottom: 1mm; }
+      .side-section p, .side-section li, .skill-list li { font-size: 8pt; line-height: 1.25; margin-bottom: .7mm; }
+      .main { padding: 7mm 8mm 6mm; }
+      .eyebrow { font-size: 8pt; margin-bottom: 1.5mm; }
+      h1 { font-size: 22pt; }
+      .role { font-size: 9.5pt; margin: 1.5mm 0 2.5mm; }
+      .summary { font-size: 8pt; line-height: 1.35; margin-bottom: 3mm; }
+      .main-section { margin-bottom: 2.5mm; break-inside: avoid; }
+      .main-section h2 { font-size: 7.5pt; margin-bottom: 1mm; padding-bottom: 1mm; }
+      .data-row { padding: .7mm 1mm; font-size: 8pt; grid-template-columns: 32mm 3mm minmax(0, 1fr); gap: 1mm; }
+      .timeline-entry { grid-template-columns: 20mm 3mm minmax(0, 1fr); gap: 1.5mm; padding: .5mm 1mm 2mm; break-inside: avoid; }
+      .year { font-size: 8pt; }
+      .entry-content h3 { font-size: 8.5pt; line-height: 1.2; }
+      .entry-content p, .entry-content ul { font-size: 8pt; line-height: 1.25; margin-top: .5mm; }
+      .entry-content li { margin-bottom: 0; }
+      .dot::before { width: 2mm; height: 2mm; margin-top: 1mm; }
+      .dot::after { top: 3mm; bottom: -2mm; }
+      .cert-list { gap: 1mm; }
+      .cert-list span { font-size: 7.5pt; padding: .5mm 1mm; }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar"><span>IKHRAM.OS // CURRICULUM VITAE</span><button type="button" onclick="window.print()">PRINT / SAVE AS PDF</button></div>
+  <article class="resume">
+    <aside class="sidebar">
+      <img class="portrait" src="profile.jpg" alt="Portrait of Ikhram Bilal Widhyadana">
+      <section class="side-section">
+        <h2>Contact</h2>
+        <p>Semarang, Central Java</p>
+        <p><a href="mailto:wikhrambilal79@gmail.com" style="color:inherit">wikhrambilal79@gmail.com</a></p>
+        <p>Instagram: @ikh.ram169</p>
+      </section>
+      <section class="side-section">
+        <h2>Skills</h2>
+        <ul class="skill-list">
+          <li>Figma</li>
+          <li>Photo Editing & Photography</li>
+          <li>Broadcasting</li>
+          <li>Prompting</li>
+          <li>Networking</li>
+          <li>IoT</li>
+          <li>HTML & CSS</li>
+          <li>Design</li>
+          <li>Collaboration</li>
+          <li>Discussion</li>
+          <li>Creativity &amp; Innovation</li>
+          <li>Problem Solving</li>
+        </ul>
+      </section>
+      <section class="side-section">
+        <h2>Interests</h2>
+        <ul>
+          <li>IoT &amp; Cyber Tools</li>
+          <li>AI Expertise</li>
+          <li>LLM &amp; AI Agents</li>
+          <li>Cybersecurity &amp; Networking</li>
+          <li>Event Organizing</li>
+        </ul>
+      </section>
+    </aside>
+    <main class="main">
+      <p class="eyebrow">CURRICULUM VITAE / 2026</p>
+      <h1>Ikhram Bilal<br>Widhyadana</h1>
+      <p class="role">SIJA Student - Frontend & IoT</p>
+      <p class="summary"><strong>A student in the Information Systems, Networking, and Applications (SIJA) program</strong> with a strong interest in <em>cybersecurity</em> and the <em>Internet of Things</em> (IoT). Actively contributes to school IoT projects, from initial design through implementation. Committed to continually developing technical skills and knowledge as digital technology evolves, with the aim of building secure and efficient systems.</p>
+
+      <section class="main-section">
+        <h2>Personal Information</h2>
+        <div class="data-row"><strong>Full Name</strong><span>:</span><span>Ikhram Bilal Widhyadana</span></div>
+        <div class="data-row"><strong>Location</strong><span>:</span><span>Semarang, Central Java</span></div>
+        <div class="data-row"><strong>Date of Birth</strong><span>:</span><span>06 January 2009</span></div>
+        <div class="data-row"><strong>Email</strong><span>:</span><span>wikhrambilal79@gmail.com</span></div>
+      </section>
+
+      <section class="main-section">
+        <h2>School</h2>
+        <div class="timeline-entry">
+          <div class="year">2024-<br>Present</div><div class="dot"></div>
+          <div class="entry-content"><h3>SMK Negeri 7 Semarang</h3><p>Major in Information Systems, Networking &amp; Applications (SIJA)</p></div>
+        </div>
+      </section>
+
+      <section class="main-section">
+        <h2>Experience &amp; Leadership</h2>
+        <div class="timeline-entry">
+          <div class="year">2026</div><div class="dot"></div>
+          <div class="entry-content"><h3>Lead Prototyper - Smart Hydro-Guard & SmartPark</h3><p>SMKN 7 Semarang & Autonomous Hardware Labs</p><ul><li>Developed an ESP32-based crop protection prototype using ultrasonic sensors and actuators.</li><li>Prepared the SmartPark budget and built a servo-operated parking barrier prototype.</li></ul></div>
+        </div>
+        <div class="timeline-entry">
+          <div class="year">2025-<br>Present</div><div class="dot"></div>
+          <div class="entry-content"><h3>Vice President Broadcast - StembaCinematoGraphy</h3><p>Production operations, audiovisual infrastructure, and broadcast staging</p><ul><li>Coordinated technical logistics for institutional productions and broadcasts for external clients.</li><li>Trained student operators in multicamera workflows, wireless monitoring, and digital signal processing (DSP) audio.</li></ul></div>
+        </div>
+        <div class="timeline-entry">
+          <div class="year">2025-<br>Present</div><div class="dot"></div>
+          <div class="entry-content"><h3>Member - Stemba Computer Club (SCC)</h3><p>Computer networking and system administration</p><ul><li>Practiced configuring MikroTik routing and Linux firewalls, and analyzing network traffic.</li></ul></div>
+        </div>
+      </section>
+
+      <section class="main-section">
+        <h2>Selected Project</h2>
+        <div class="timeline-entry">
+          <div class="year">2025-2026</div><div class="dot"></div>
+          <div class="entry-content"><h3>Automotive Tech Web Presentation</h3><p>Creative development & interactive technical storytelling</p><ul><li>Developed an interactive editorial experience explaining combustion engines, hybrid vehicles, and electric vehicles.</li><li>Achieved more than 800 exploratory sessions and ensured a responsive experience on mobile devices.</li></ul></div>
+        </div>
+      </section>
+
+      <section class="main-section">
+        <h2>Certifications</h2>
+        <div class="cert-list"><span>AI Literacy - Senopati Academy (2026)</span><span>Java Fundamentals - Oracle Academy (2026)</span><span>IT Essentials - Cisco Networking Academy (2025)</span><span>Digital Skills &amp; AI Training Program - Save The Children Indonesia &times; RevoU</span></div>
+      </section>
+    </main>
+  </article>
+</body>
+</html>
+
